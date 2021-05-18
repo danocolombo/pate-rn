@@ -12,38 +12,34 @@ export const RallyEvent = ({ rally = {} }) => {
     city = "Blue Ridge",
     stateProv = "GA",
     postalCode = "30513",
-    graphic = "https://pate-images.s3.amazonaws.com/P8-BlueRidge-GA-20210522-web.png",
+    graphic = "https://pate-images.s3.amazonaws.com/BlueRidge-app.png",
   } = rally;
   const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
   return (
     <>
-      <Card>
-        <Card.Title
-          title={churchName}
-          subtitle={city + ", " + stateProv}
-          left={LeftContent}
+      <Card elevation={5} style={styles.card}>
+        <Card.Cover
+          key={churchName}
+          style={styles.cover}
+          source={{ uri: graphic }}
         />
-        <Card.Content>
-          <Title>May 22, 2021</Title>
-        </Card.Content>
-        <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
-        <Card.Content>
-          <Title>Calvary Chapel Blue Ridge</Title>
-          <Paragraph>101 George Curtis Rd</Paragraph>
-          <Paragraph>Blue Ridge, GA 30513</Paragraph>
-        </Card.Content>
-
-        <Card.Actions>
-          <Button>More Info</Button>
-        </Card.Actions>
+        <Text style={styles.title}>{churchName}</Text>
       </Card>
     </>
   );
 };
 const styles = StyleSheet.create({
-  list: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "blue",
+  card: {
+    backgroundColor: "white",
+  },
+  title: {
+    padding: 20,
+  },
+  cover: {
+    paddingRight: 5,
+    paddingLeft: 5,
+    marginTop: 5,
+    marginBottom: 5,
+    backgroundColor: "white",
   },
 });
