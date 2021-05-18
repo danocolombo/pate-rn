@@ -1,16 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import React from "react";
+import { View } from "react-native";
+import { BasicSearch } from "./src/features/search/screens/search-basic.screen";
 export default function App() {
   return (
     <View>
-      <Text>Start Here</Text>
-      <StatusBar style="auto" />
+      <BasicSearch />
+      <ExpoStatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  
-});
