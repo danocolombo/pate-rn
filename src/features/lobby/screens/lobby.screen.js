@@ -1,29 +1,30 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView, StatusBar } from "react-native";
-import { RallyEvent } from "../components/rally-event.component";
+import styled from "styled-components/native";
+import { StatusBar } from "react-native";
+import { RallyEvent } from "../components/rally-event-card.component";
 import { Searchbar } from "react-native-paper";
+
+const LobbySafeAreaView = styled.SafeAreaView`
+  flex: 1;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+`;
+const SearchArea = styled.View`
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.secondary};
+`;
+const RallyList = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.bg.primary};
+`;
 export const Lobby = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.search}>
+    <LobbySafeAreaView>
+      <SearchArea>
         <Searchbar />
-      </View>
-      <RallyEvent />
-    </SafeAreaView>
+      </SearchArea>
+      <RallyList>
+        <RallyEvent />
+      </RallyList>
+    </LobbySafeAreaView>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-  },
-  search: {
-    padding: 16,
-    backgroundColor: "green",
-  },
-  list: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "blue",
-  },
-});

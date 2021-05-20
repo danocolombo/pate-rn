@@ -1,29 +1,28 @@
 import React from "react";
+import styled from "styled-components/native";
 import { StyleSheet, View, SafeAreaView, StatusBar } from "react-native";
 import { BasicList } from "../components/search-basic-list.component";
 import { Searchbar } from "react-native-paper";
+const SearchSafeAreaView = styled.SafeAreaView`
+  flex: 1;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+`;
+const SearchBarView = styled.View`
+  padding: 16px;
+  background-color: green;
+`;
+const SearchListContainer = styled.View`
+  padding: 16px;
+`;
 export const BasicSearch = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.search}>
+    <SearchSafeAreaView>
+      <SearchBarView>
         <Searchbar />
-      </View>
-      <BasicList />
-    </SafeAreaView>
+      </SearchBarView>
+      <SearchListContainer>
+        <BasicList />
+      </SearchListContainer>
+    </SearchSafeAreaView>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-  },
-  search: {
-    padding: 16,
-    backgroundColor: "green",
-  },
-  list: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "blue",
-  },
-});
