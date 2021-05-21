@@ -9,6 +9,8 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { theme } from "./src/infrastructure/theme";
 import { Lobby } from "./src/features/lobby/screens/lobby.screen";
 import { Profile } from "./src/features/profile/screens/profile.screen";
@@ -31,9 +33,30 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tab.Navigator>
-            <Tab.Screen name="Home" component={EventsScreen} />
-            <Tab.Screen name="Settings" component={ProfileScreen} />
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+
+                if (route.name === "Events") {
+                  iconName = "event";
+                } else if (route.name === "Profile") {
+                  iconName = "settings";
+                }
+
+                // You can return any component that you like here!
+                return (
+                  <MaterialIcons name={iconName} size={size} color={color} />
+                );
+              },
+            })}
+            tabBarOptions={{
+              activeTintColor: "blue",
+              inactiveTintColor: "gray",
+            }}
+          >
+            <Tab.Screen name="Events" component={EventsScreen} />
+            <Tab.Screen name="Profile" component={ProfileScreen} />
           </Tab.Navigator>
         </NavigationContainer>
 
