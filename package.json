@@ -9,6 +9,7 @@
         "lint": "eslint . --ext .js"
     },
     "dependencies": {
+        "@aws-amplify/cli": "^4.51.2",
         "@expo-google-fonts/lato": "^0.1.0",
         "@expo-google-fonts/oswald": "^0.1.0",
         "@expo/vector-icons": "^12.0.5",
