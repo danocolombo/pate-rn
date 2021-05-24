@@ -5,6 +5,7 @@ import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
 const RallyCard = styled(Card)`
   background-color: white;
+  margin-bottom: 10px;
 `;
 const RallyCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
@@ -37,6 +38,7 @@ export const RallyEvent = ({ rally = {} }) => {
     postalCode = "30513",
     graphic = "https://pate-images.s3.amazonaws.com/BlueRidge-app.png",
   } = rally;
+
   return (
     <>
       <RallyCard elevation={5}>

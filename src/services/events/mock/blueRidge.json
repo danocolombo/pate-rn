@@ -1,0 +1,46 @@
+{
+  "statusCode": 200,
+  "body": {
+    "Items": [
+      {
+        "meal": {
+          "startTime": "12:00",
+          "mealCount": 28,
+          "cost": "none",
+          "message": "",
+          "deadline": "2021-05-19",
+          "mealsServed": 0
+        },
+        "eventDate": "20210522",
+        "contact": {
+          "name": "Dena Jacobs",
+          "phone": "9545932254",
+          "email": "Denamj44@gmail.com"
+        },
+        "status": "",
+        "message": "",
+        "stateProv": "GA",
+        "coordinator": {
+          "name": "Ronald Coleman",
+          "id": "0a28050e-5639-4756-86de-6564dfe50b93",
+          "phone": "6782235129",
+          "email": "crrepcoleman@gmail.com"
+        },
+        "uid": "cd993db1307d41030ce662bdaa7cb074",
+        "name": "Calvary Chapel Blue Ridge",
+        "registrations": 39,
+        "city": "Blue Ridge",
+        "startTime": "13:00",
+        "attendees": 0,
+        "approved": true,
+        "graphic": "P8-BlueRidge-GA-20210522-web.png",
+        "endTime": "16:00",
+        "id": "",
+        "postalCode": "30513",
+        "street": "101 George Curtis Rd"
+      }
+    ],
+    "Count": 1,
+    "ScannedCount": 1
+  }
+}

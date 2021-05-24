@@ -1,0 +1,29 @@
+{
+  "statusCode": 200,
+  "body": {
+    "Items": [
+      {
+        "lastName": "Account",
+        "residence": {
+          "stateProv": "TT",
+          "city": "Vallejo",
+          "street": "1 Main St.",
+          "postalCode": "12345"
+        },
+        "stateRep": "TT",
+        "email": "danocolombo@gmail.com",
+        "uid": "6b5f1019-0776-42e2-8cce-d7a2fc8bb93e",
+        "phone": "7066042494",
+        "firstName": "TTRep",
+        "church": {
+          "name": "His Church",
+          "stateProv": "TT",
+          "city": "Jordan Valley"
+        },
+        "isLoggedIn": true
+      }
+    ],
+    "Count": 1,
+    "ScannedCount": 1
+  }
+}
