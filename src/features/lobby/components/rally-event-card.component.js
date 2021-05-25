@@ -1,4 +1,6 @@
 import React from "react";
+// import { Storage } from "aws-amplify";
+import { AmplifyS3Image } from "aws-amplify-react-native";
 import styled from "styled-components/native";
 import { Text, StyleSheet } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
@@ -43,6 +45,7 @@ export const RallyEvent = ({ rally = {} }) => {
     <>
       <RallyCard elevation={5}>
         <RallyCardCover key={churchName} source={{ uri: graphic }} />
+        <AmplifyS3Image style={{ "--width": "100%" }} imgKey={graphic} />
         <Info>
           <ChurchTitle>{churchName}</ChurchTitle>
           <Address>
