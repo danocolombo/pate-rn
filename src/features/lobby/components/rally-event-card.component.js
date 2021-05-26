@@ -1,11 +1,11 @@
 import React from "react";
 // import { Storage } from "aws-amplify";
 // import { AmplifyS3Image } from "aws-amplify-react-native";
-import Amplify from 'aws-amplify';
-import awsconfig from "../../../aws-exports";
+// import Amplify from 'aws-amplify';
+// import awsconfig from "../../../aws-exports";
 
-import { withAuthenticator, S3Image } from "aws-amplify-react-native";
-Amplify.configure(awsconfig);
+// import { withAuthenticator, S3Image } from "aws-amplify-react-native";
+// Amplify.configure(awsconfig);
 import styled from "styled-components/native";
 import { Text, StyleSheet } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
@@ -18,10 +18,10 @@ const RallyCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
-const RallyCardCoverImage = styled(S3Image)`
-  padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
+// const RallyCardCoverImage = styled(S3Image)`
+//   padding: ${(props) => props.theme.space[3]};
+//   background-color: ${(props) => props.theme.colors.bg.primary};
+// `;
 const Info = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
@@ -36,7 +36,7 @@ const Address = styled.Text`
   font-family: ${(props) => props.theme.fonts.body};
 `;
 
-const RallyEvent = ({ rally = {} }) => {
+export const RallyEvent = ({ rally = {} }) => {
   const {
     uid = "cd993db1307d41030ce662bdaa7cb074",
     eventDate = "20210522",
@@ -55,7 +55,7 @@ const RallyEvent = ({ rally = {} }) => {
       <RallyCard elevation={5}>
         <RallyCardCover key={churchName} source={{ uri: graphic }} />
         {/*<AmplifyS3Image style={{ "--width": "100%" }} imgKey={graphic} />*/}
-        <RallyCardCoverImage imgKey={graphic} key={churchName}/>
+        {/*<RallyCardCoverImage imgKey={graphic} key={churchName}/>*/}
         <Info>
           <ChurchTitle>{churchName}</ChurchTitle>
           <Address>
@@ -66,4 +66,4 @@ const RallyEvent = ({ rally = {} }) => {
     </>
   );
 };
-export default withAuthenticator(RallyEvent);
+export default RallyEvent;
