@@ -35,6 +35,11 @@ const Address = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.caption};
   font-family: ${(props) => props.theme.fonts.body};
 `;
+const GraphicLocation = styled.Text`
+  color: ${(props) => props.theme.colors.ui.primary};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  font-family: ${(props) => props.theme.fonts.body};
+`;
 
 export const RallyEvent = ({ rally = {} }) => {
   const {
@@ -61,6 +66,7 @@ export const RallyEvent = ({ rally = {} }) => {
           <Address>
             {city}, {stateProv}
           </Address>
+          <GraphicLocation>{graphic}</GraphicLocation>
         </Info>
       </RallyCard>
     </>
