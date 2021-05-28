@@ -4,13 +4,18 @@ import { eventsRequest, eventsTransform } from "./events.service";
 
 export const EventsContext = createContext();
 
+//the 3 values for the context.
+// 1. the events
+// 2. indicator whether it is loading or not
+// 3. any errors that might be experienced.
 export const EventsContextProvider = ({ children }) => {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const retrieveEvents = () => {
+  const retrieveActiveEvents = () => {
     setIsLoading(true);
+    //setTimeout is only simulating API call, not necessary when using API
     setTimeout(() => {
       eventsRequest()
         .then(eventsTransform)
@@ -24,12 +29,11 @@ export const EventsContextProvider = ({ children }) => {
         });
     }, 2000);
   };
+  // ON MOUNT....
   useEffect(() => {
-    retrieveEvents();
+    retrieveActiveEvents();
   }, []);
-  //   console.log("===============vvvvv==============");
-  //   console.log(events);
-  //   console.log("----------------^^^^^^^^^^^--------------");
+
   return (
     <EventsContext.Provider
       value={{

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 import styled from "styled-components/native";
+import { ActivityIndicator, Colors } from "react-native-paper";
 import { EventsContext } from "../../../services/events/events.context";
 import { StatusBar } from "react-native";
 import { RallyEvent } from "../components/rally-event-card.component";
@@ -27,10 +28,22 @@ const EventList = styled(FlatList).attrs({
 export const Lobby = () => {
   const eventContext = useContext(EventsContext);
   const { isLoading, error, events } = useContext(EventsContext);
-  console.log(error);
-  console.log(eventContext);
+  //next console.log should spit out the events defined in context.
+  //console.log(error);
+  //console.log(eventContext);
+
   return (
     <LobbySafeAreaView>
+      {isLoading && (
+        <View style={{ position: "absolute", top: "50%", left: "50%" }}>
+          <ActivityIndicator
+            size={50}
+            style={{ marginLeft: -25 }}
+            animating={true}
+            color={Colors.blue300}
+          />
+        </View>
+      )}
       <SearchArea>
         <Searchbar />
       </SearchArea>

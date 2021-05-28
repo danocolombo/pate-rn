@@ -20,7 +20,11 @@ function EventsScreen() {
 function ProfileScreen() {
   return <Profile />;
 }
+//++++++++++++++++++++++
+// CONTEXT FOR APP
+//++++++++++++++++++++++
 import { EventsContextProvider } from "./src/services/events/events.context";
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {

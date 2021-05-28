@@ -19,13 +19,16 @@ export const eventsRequest = (operation = "getActiveEvents") => {
     resolve(mock);
   });
 };
+//this following function cleans up the data received from the
+//datasource and transforms it for use in the app. Only used
+//when loading the context.
 export const eventsTransform = ({ body = [] }) => {
   const mappedResults = body.map((rally) => {
-    console.log("yep");
+    //for each entry we want to transform data
     let fullGraphic = "https://pate-images.s3.amazonaws.com/" + rally.graphic;
     return {
       ...rally,
-      processed: true,
+      transformedData: true,
       churchName: rally.name,
       graphic: fullGraphic,
     };
