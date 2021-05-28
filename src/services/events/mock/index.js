@@ -9,9 +9,10 @@ export const singleMocks = {
   cd993db1307d41030ce662bdaa7cb074: blueRidge,
 };
 export const genericMocks = {
-  // eslint-disable-next-line prettier/prettier
   getActiveEvents: activeEvents,
   sanFran: san_francisco,
   blueRidge: blueRidge,
   chestnut: chestnut,
+  "34.1724388,-83.8384051": chestnut,
+  "34.8941,-84.3505887": blueRidge,
 };

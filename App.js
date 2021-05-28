@@ -24,6 +24,7 @@ function ProfileScreen() {
 // CONTEXT FOR APP
 //++++++++++++++++++++++
 import { EventsContextProvider } from "./src/services/events/events.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -37,35 +38,41 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <EventsContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator
-              screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused, color, size }) => {
-                  let iconName;
+        <LocationContextProvider>
+          <EventsContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator
+                screenOptions={({ route }) => ({
+                  tabBarIcon: ({ focused, color, size }) => {
+                    let iconName;
 
-                  if (route.name === "Events") {
-                    iconName = "event";
-                  } else if (route.name === "Profile") {
-                    iconName = "settings";
-                  }
+                    if (route.name === "Events") {
+                      iconName = "event";
+                    } else if (route.name === "Profile") {
+                      iconName = "settings";
+                    }
 
-                  // You can return any component that you like here!
-                  return (
-                    <MaterialIcons name={iconName} size={size} color={color} />
-                  );
-                },
-              })}
-              tabBarOptions={{
-                activeTintColor: "blue",
-                inactiveTintColor: "gray",
-              }}
-            >
-              <Tab.Screen name="Events" component={EventsScreen} />
-              <Tab.Screen name="Profile" component={ProfileScreen} />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </EventsContextProvider>
+                    // You can return any component that you like here!
+                    return (
+                      <MaterialIcons
+                        name={iconName}
+                        size={size}
+                        color={color}
+                      />
+                    );
+                  },
+                })}
+                tabBarOptions={{
+                  activeTintColor: "blue",
+                  inactiveTintColor: "gray",
+                }}
+              >
+                <Tab.Screen name="Events" component={EventsScreen} />
+                <Tab.Screen name="Profile" component={ProfileScreen} />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </EventsContextProvider>
+        </LocationContextProvider>
         <ExpoStatusBar style="auto" />
       </ThemeProvider>
     </>

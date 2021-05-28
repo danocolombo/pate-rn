@@ -17,7 +17,7 @@ export const EventsContextProvider = ({ children }) => {
     setIsLoading(true);
     //setTimeout is only simulating API call, not necessary when using API
     setTimeout(() => {
-      eventsRequest()
+      eventsRequest("34.1724388,-83.8384051")
         .then(eventsTransform)
         .then((results) => {
           setIsLoading(false);
