@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { FlatList } from "react-native";
 import styled from "styled-components/native";
+import { StatusBar } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { EventsContext } from "../../../services/events/events.context";
-import { StatusBar } from "react-native";
+import { Search } from "../components/search.component";
 import { RallyEvent } from "../components/rally-event-card.component";
-import { Searchbar } from "react-native-paper";
 
 const LobbySafeAreaView = styled.SafeAreaView`
   flex: 1;
@@ -48,9 +48,7 @@ export const Lobby = () => {
           <Loading size={50} animating={true} color={Colors.blue300} />
         </LoadingContainer>
       )}
-      <SearchArea>
-        <Searchbar />
-      </SearchArea>
+      <Search />
       <EventList
         data={events}
         renderItem={({ item }) => {
