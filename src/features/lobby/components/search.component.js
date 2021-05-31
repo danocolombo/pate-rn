@@ -13,7 +13,7 @@ export const Search = () => {
   const [searchKeyword, setSearchKeyword] = useState(keyword);
   return (
     <SearchContainer>
-      <Searchbar placeholder="Search for an event" />
+      <Searchbar placeholder="Search for an event" value={searchKeyword} />
     </SearchContainer>
   );
 };
