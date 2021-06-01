@@ -10,7 +10,7 @@ export const eventRequest = (uid = "cd993db1307d41030ce662bdaa7cb074") => {
   });
 };
 //getActiveEvents
-export const eventsRequest = (operation = "getActiveEvents") => {
+export const eventsRequest = (operation) => {
   return new Promise((resolve, reject) => {
     const mock = genericMocks[operation];
     if (!mock) {
