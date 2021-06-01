@@ -13,9 +13,10 @@ export const locationRequest = (searchTerm) => {
 };
 
 export const locationTransform = (result) => {
+  console.log("result to be transformed", result);
   const formattedResponse = camelize(result);
   const { geometry = {} } = formattedResponse.results[0];
   const { lat, lng } = geometry.location;
-
+  // return geometry;
   return { lat, lng };
 };
