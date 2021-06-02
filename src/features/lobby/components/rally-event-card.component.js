@@ -7,8 +7,8 @@ import React from "react";
 // import { withAuthenticator, S3Image } from "aws-amplify-react-native";
 // Amplify.configure(awsconfig);
 import styled from "styled-components/native";
-import { Text, StyleSheet } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+//import { Text, StyleSheet } from "react-native";
+import { Card } from "react-native-paper";
 
 const RallyCard = styled(Card)`
   background-color: white;
