@@ -1,0 +1,17 @@
+{
+  "providers": [
+    "awscloudformation"
+  ],
+  "projectName": "pate2021",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "react-native",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "/",
+      "BuildCommand": "yarn run build",
+      "StartCommand": "yarn start"
+    }
+  }
+}

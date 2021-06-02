@@ -1,0 +1,29 @@
+{
+  "statusCode": 200,
+  "body": {
+    "Items": [
+      {
+        "lastName": "Colombo",
+        "residence": {
+          "stateProv": "GA",
+          "city": "Columbus",
+          "street": "2304 Leah Drive",
+          "postalCode": "31909"
+        },
+        "stateRep": "GA",
+        "email": "danocolombo@gmail.com",
+        "uid": "c45d9046-7667-45db-8c16-60071821ba25",
+        "phone": "7066042494",
+        "firstName": "Dano",
+        "church": {
+          "name": "Wynnbrook Church",
+          "stateProv": "GA",
+          "city": "Columbus"
+        },
+        "isLoggedIn": true
+      }
+    ],
+    "Count": 1,
+    "ScannedCount": 1
+  }
+}

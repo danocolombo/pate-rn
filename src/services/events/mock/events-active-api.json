@@ -1,0 +1,156 @@
+{
+  "statusCode": 200,
+  "body": [
+    {
+      "geocode": "34.8941,-84.3505887",
+      "meal": {
+        "startTime": "12:00",
+        "mealCount": 28,
+        "cost": "none",
+        "message": "",
+        "deadline": "2021-05-19",
+        "mealsServed": 0
+      },
+      "eventDate": "20210522",
+      "contact": {
+        "name": "Dena Jacobs",
+        "phone": "9545932254",
+        "email": "Denamj44@gmail.com"
+      },
+      "status": "",
+      "message": "",
+      "stateProv": "GA",
+      "coordinator": {
+        "name": "Ronald Coleman",
+        "id": "0a28050e-5639-4756-86de-6564dfe50b93",
+        "phone": "6782235129",
+        "email": "crrepcoleman@gmail.com"
+      },
+      "uid": "cd993db1307d41030ce662bdaa7cb074",
+      "name": "Calvary Chapel Blue Ridge",
+      "registrations": 39,
+      "city": "Blue Ridge",
+      "startTime": "13:00",
+      "attendees": 0,
+      "approved": true,
+      "graphic": "P8-BlueRidge-GA-20210522-web.png",
+      "endTime": "16:00",
+      "id": "",
+      "postalCode": "30513",
+      "street": "101 George Curtis Rd"
+    },
+    {
+      "geocode": "34.1724388,-83.8384051",
+      "meal": {
+        "startTime": "12:00",
+        "mealCount": 10,
+        "cost": "0",
+        "message": "No cost, just a blessing",
+        "deadline": "2021-05-19",
+        "mealsServed": 0
+      },
+      "eventDate": "20210522",
+      "contact": {
+        "name": "Chase Adams",
+        "phone": "770-598-5535",
+        "email": ""
+      },
+      "status": "offered",
+      "message": "We are excited to offer the first rally have the Covid-19 pandemic",
+      "stateProv": "GA",
+      "coordinator": {
+        "name": "Ronald Coleman",
+        "id": "0a28050e-5639-4756-86de-6564dfe50b93",
+        "phone": "678-2235129",
+        "email": "crrepcoleman@gmail.com"
+      },
+      "uid": "65dc88fb33fe4c0887b086188f2e9b1f",
+      "name": "Chestnut Mtn Church",
+      "registrations": 12,
+      "city": "Flowery Branch",
+      "startTime": "13:00",
+      "attendees": "0",
+      "approved": false,
+      "graphic": "20210522-FloweryBranch-GA.png",
+      "endTime": "16:00",
+      "attendance": 0,
+      "id": "2a7f73c4a7f8601f243b1a89ccc29d7c",
+      "postalCode": "30542",
+      "street": "4903 Chestnut Mtn Cir"
+    },
+    {
+      "meal": {
+        "startTime": "",
+        "mealCount": 0,
+        "cost": "",
+        "message": "",
+        "deadline": "",
+        "mealsServed": 0
+      },
+      "eventDate": "20210526",
+      "contact": {
+        "name": "John Doe",
+        "phone": "3333333355",
+        "email": "jd@ftc.net"
+      },
+      "status": "",
+      "message": "",
+      "stateProv": "TT",
+      "coordinator": {
+        "name": "TTRep Account",
+        "id": "6b5f1019-0776-42e2-8cce-d7a2fc8bb93e",
+        "phone": "7066042494",
+        "email": "danocolombo@gmail.com"
+      },
+      "uid": "dff930c481d6b298b87808b0caeed824",
+      "name": "His Church",
+      "registrations": 0,
+      "city": "Jordan Valley",
+      "startTime": "",
+      "attendees": 0,
+      "approved": false,
+      "graphic": "compliant-people.jpg",
+      "endTime": "",
+      "id": "",
+      "postalCode": "12345",
+      "street": "1 Main St."
+    },
+    {
+      "meal": {
+        "startTime": "",
+        "mealCount": 0,
+        "cost": "",
+        "message": "",
+        "deadline": "",
+        "mealsServed": 0
+      },
+      "eventDate": "30000101",
+      "contact": {
+        "name": "John Smith",
+        "phone": "1111111111",
+        "email": "js@jon.net"
+      },
+      "status": "",
+      "message": "",
+      "stateProv": "TT",
+      "coordinator": {
+        "name": "TTRep Account",
+        "id": "6b5f1019-0776-42e2-8cce-d7a2fc8bb93e",
+        "phone": "7066042494",
+        "email": "danocolombo@gmail.com"
+      },
+      "uid": "7c720d14382cde084f03be60d398a0c6",
+      "name": "Sogwallow Baptist",
+      "registrations": 0,
+      "city": "Sogwallow",
+      "startTime": "",
+      "attendees": 0,
+      "approved": false,
+      "graphic": "TT-SOGWALLOW-TT.png",
+      "endTime": "",
+      "id": "",
+      "postalCode": "12342",
+      "street": "1 Main St."
+    }
+  ]
+}

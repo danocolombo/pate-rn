@@ -1,0 +1,29 @@
+{
+  "statusCode": 200,
+  "body": {
+    "Items": [
+      {
+        "lastName": "Guru",
+        "residence": {
+          "stateProv": "GA",
+          "city": "Columbus",
+          "street": "2304 Leah Dr",
+          "postalCode": "31909"
+        },
+        "email": "fortsonguru@gmail.com",
+        "uid": "dab7ca09-95c5-4a39-8301-2683e768f181",
+        "phone": "7066042494",
+        "stateLead": "GA",
+        "firstName": "Fortson",
+        "church": {
+          "name": "Home Church",
+          "stateProv": "GA",
+          "city": "Columbus"
+        },
+        "isLoggedIn": true
+      }
+    ],
+    "Count": 1,
+    "ScannedCount": 1
+  }
+}

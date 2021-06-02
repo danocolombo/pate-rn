@@ -1,0 +1,44 @@
+{
+  "statusCode": 200,
+  "body": [
+    {
+      "geocode": "34.1724388,-83.8384051",
+      "meal": {
+        "startTime": "12:00",
+        "mealCount": 10,
+        "cost": "0",
+        "message": "No cost, just a blessing",
+        "deadline": "2021-05-19",
+        "mealsServed": 0
+      },
+      "eventDate": "20210522",
+      "contact": {
+        "name": "Chase Adams",
+        "phone": "770-598-5535",
+        "email": ""
+      },
+      "status": "offered",
+      "message": "We are excited to offer the first rally have the Covid-19 pandemic",
+      "stateProv": "GA",
+      "coordinator": {
+        "name": "Ronald Coleman",
+        "id": "0a28050e-5639-4756-86de-6564dfe50b93",
+        "phone": "678-2235129",
+        "email": "crrepcoleman@gmail.com"
+      },
+      "uid": "65dc88fb33fe4c0887b086188f2e9b1f",
+      "name": "Chestnut Mtn Church",
+      "registrations": 12,
+      "city": "Flowery Branch",
+      "startTime": "13:00",
+      "attendees": "0",
+      "approved": false,
+      "graphic": "20210522-FloweryBranch-GA.png",
+      "endTime": "16:00",
+      "attendance": 0,
+      "id": "2a7f73c4a7f8601f243b1a89ccc29d7c",
+      "postalCode": "30542",
+      "street": "4903 Chestnut Mtn Cir"
+    }
+  ]
+}
