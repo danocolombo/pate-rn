@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { FlatList } from "react-native";
+import { StatusBar, FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
-import { StatusBar } from "react-native";
+
 import { ActivityIndicator, Colors } from "react-native-paper";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { EventsContext } from "../../../services/events/events.context";
 import { Search } from "../components/search.component";
 import { RallyEvent } from "../components/rally-event-card.component";
@@ -12,14 +13,6 @@ const EventsSafeAreaView = styled.SafeAreaView`
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 
-const SearchArea = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.bg.secondary};
-`;
-const RallyList = styled.View`
-  flex: 1;
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
 `;
@@ -35,12 +28,12 @@ const EventList = styled(FlatList).attrs({
     padding: 16,
   },
 })``;
-export const EventsScreen = () => {
-  const { isLoading, error, events } = useContext(EventsContext);
+export const EventsScreen = ({ navigation }) => {
+  const { isLoading, events } = useContext(EventsContext);
   //next console.log should spit out the events defined in context.
   //console.log(error);
   //console.log(eventContext);
-
+  console.log(navigation);
   return (
     <EventsSafeAreaView>
       {isLoading && (
@@ -52,7 +45,15 @@ export const EventsScreen = () => {
       <EventList
         data={events}
         renderItem={({ item }) => {
-          return <RallyEvent rally={item} />;
+          return (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("EventDetail")}
+            >
+              <Spacer position="bottom" size="large">
+                <RallyEvent rally={item} />
+              </Spacer>
+            </TouchableOpacity>
+          );
         }}
         keyExtractor={(item) => item.uid}
       />
