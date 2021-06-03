@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { EventsNavigator } from "../navigation/events.navigator";
 
-// import { Lobby } from "../../features/lobby/screens/lobby.screen";
+import { Events } from "../../features/events/screens/events.screen";
 import { Profile } from "../../features/profile/screens/profile.screen";
 import { SafeArea } from "../../components/utility/safe-area.component";
 
@@ -18,7 +18,7 @@ const TAB_ICON = {
 };
 
 function EventsScreen() {
-  return <Lobby />;
+  return <Events />;
 }
 const Map = () => (
   <SafeArea>

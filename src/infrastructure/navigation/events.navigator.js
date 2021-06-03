@@ -1,15 +1,13 @@
 import React from "react";
 
 import { createStackNavigator } from "@react-navigation/stack";
-import { Lobby } from "../../features/lobby/screens/lobby.screen";
+import { EventsScreen } from "../../features/events/screens/events.screen";
 const EventStack = createStackNavigator();
 
 export const EventsNavigator = () => {
   return (
     <EventStack.Navigator>
-      <EventStack.Screen>
-        <Lobby name="Events" component={RallyScreen} />
-      </EventStack.Screen>
+      <EventStack.Screen name="Events" component={EventsScreen} />
     </EventStack.Navigator>
   );
 };

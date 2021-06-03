@@ -7,7 +7,7 @@ import { EventsContext } from "../../../services/events/events.context";
 import { Search } from "../components/search.component";
 import { RallyEvent } from "../components/rally-event-card.component";
 
-const LobbySafeAreaView = styled.SafeAreaView`
+const EventsSafeAreaView = styled.SafeAreaView`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
@@ -35,14 +35,14 @@ const EventList = styled(FlatList).attrs({
     padding: 16,
   },
 })``;
-export const Lobby = () => {
+export const EventsScreen = () => {
   const { isLoading, error, events } = useContext(EventsContext);
   //next console.log should spit out the events defined in context.
   //console.log(error);
   //console.log(eventContext);
 
   return (
-    <LobbySafeAreaView>
+    <EventsSafeAreaView>
       {isLoading && (
         <LoadingContainer>
           <Loading size={50} animating={true} color={Colors.blue300} />
@@ -56,6 +56,6 @@ export const Lobby = () => {
         }}
         keyExtractor={(item) => item.uid}
       />
-    </LobbySafeAreaView>
+    </EventsSafeAreaView>
   );
 };
