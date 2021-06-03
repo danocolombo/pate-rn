@@ -6,7 +6,7 @@ const EventStack = createStackNavigator();
 
 export const EventsNavigator = () => {
   return (
-    <EventStack.Navigator>
+    <EventStack.Navigator headerMode="none">
       <EventStack.Screen name="Events" component={EventsScreen} />
     </EventStack.Navigator>
   );
