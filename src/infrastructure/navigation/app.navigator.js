@@ -4,7 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { Lobby } from "../../features/lobby/screens/lobby.screen";
+import { EventsNavigator } from "../navigation/events.navigator";
+
+// import { Lobby } from "../../features/lobby/screens/lobby.screen";
 import { Profile } from "../../features/profile/screens/profile.screen";
 import { SafeArea } from "../../components/utility/safe-area.component";
 
@@ -51,7 +53,7 @@ export const AppNavigator = () => {
           inactiveTintColor: "gray",
         }}
       >
-        <Tab.Screen name="Events" component={EventsScreen} />
+        <Tab.Screen name="Events" component={EventsNavigator} />
         <Tab.Screen name="Map" component={Map} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
