@@ -3,23 +3,13 @@ import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
 import { EventsNavigator } from "../navigation/events.navigator";
 
-import { Events } from "../../features/events/screens/events.screen";
 import { Profile } from "../../features/profile/screens/profile.screen";
 import { SafeArea } from "../../components/utility/safe-area.component";
 
 const Tab = createBottomTabNavigator();
-const TAB_ICON = {
-  Events: "calendar",
-  Map: "md-map",
-  Settings: "md-settings",
-};
 
-function EventsScreen() {
-  return <Events />;
-}
 const Map = () => (
   <SafeArea>
     <Text>Map</Text>
