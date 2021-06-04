@@ -17,6 +17,21 @@ export const LocationContextProvider = ({ children }) => {
   useEffect(() => {
     if (!keyword.length) {
       // don't do anything
+      //-----------------------------------
+      // load all activeEvents
+      //-----------------------------------
+      locationRequest("getActiveEvents")
+        .then(locationTransform)
+        .then((result) => {
+          setIsLoading(false);
+          setLocation(result);
+          console.log("result:", result);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err);
+          console.log("err:" + err);
+        });
       return;
     }
     locationRequest(keyword.toLowerCase())
