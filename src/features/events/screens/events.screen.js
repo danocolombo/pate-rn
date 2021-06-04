@@ -6,7 +6,7 @@ import { ActivityIndicator, Colors } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { EventsContext } from "../../../services/events/events.context";
 import { Search } from "../components/search.component";
-import { RallyEvent } from "../components/rally-event-card.component";
+import { EventInfoCard } from "../components/event-card.component";
 
 const EventsSafeAreaView = styled.SafeAreaView`
   flex: 1;
@@ -47,10 +47,12 @@ export const EventsScreen = ({ navigation }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate("EventDetail")}
+              onPress={() =>
+                navigation.navigate("EventDetail", { rally: item })
+              }
             >
               <Spacer position="bottom" size="large">
-                <RallyEvent rally={item} />
+                <EventInfoCard rally={item} />
               </Spacer>
             </TouchableOpacity>
           );

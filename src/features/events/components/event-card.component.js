@@ -10,11 +10,11 @@ import styled from "styled-components/native";
 //import { Text, StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
 
-const RallyCard = styled(Card)`
+const EventCard = styled(Card)`
   background-color: white;
   margin-bottom: 10px;
 `;
-const RallyCardCover = styled(Card.Cover)`
+const EventCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
@@ -41,7 +41,7 @@ const GraphicLocation = styled.Text`
   font-family: ${(props) => props.theme.fonts.body};
 `;
 
-export const RallyEvent = ({ rally = {} }) => {
+export const EventInfoCard = ({ rally = {} }) => {
   const {
     uid = "cd993db1307d41030ce662bdaa7cb074",
     eventDate = "20210522",
@@ -57,8 +57,8 @@ export const RallyEvent = ({ rally = {} }) => {
 
   return (
     <>
-      <RallyCard elevation={5}>
-        <RallyCardCover key={churchName} source={{ uri: graphic }} />
+      <EventCard elevation={5}>
+        <EventCardCover key={churchName} source={{ uri: graphic }} />
         {/*<AmplifyS3Image style={{ "--width": "100%" }} imgKey={graphic} />*/}
         {/*<RallyCardCoverImage imgKey={graphic} key={churchName}/>*/}
         <Info>
@@ -68,8 +68,8 @@ export const RallyEvent = ({ rally = {} }) => {
           </Address>
           <GraphicLocation>{graphic}</GraphicLocation>
         </Info>
-      </RallyCard>
+      </EventCard>
     </>
   );
 };
-export default RallyEvent;
+export default EventInfoCard;
