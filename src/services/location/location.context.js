@@ -5,7 +5,7 @@ import { locationRequest, locationTransform } from "./location.service";
 export const LocationContext = React.createContext();
 
 export const LocationContextProvider = ({ children }) => {
-  const [keyword, setKeyword] = useState("Blue Ridge");
+  const [keyword, setKeyword] = useState("getActiveProjects");
   const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -17,8 +17,25 @@ export const LocationContextProvider = ({ children }) => {
   useEffect(() => {
     if (!keyword.length) {
       // don't do anything
+      //-----------------------------------
+      // load all activeEvents
+      //-----------------------------------
+      // console.log("location.context::useEffect, !keyword.length");
+      // locationRequest("getActiveEvents")
+      //   .then(locationTransform)
+      //   .then((result) => {
+      //     setIsLoading(false);
+      //     setLocation(result);
+      //     console.log("result:", result);
+      //   })
+      //   .catch((err) => {
+      //     setIsLoading(false);
+      //     setError(err);
+      //     console.log("err:" + err);
+      //   });
       return;
     }
+    // console.log("location.service:: we got keyword (" + keyword + ")");
     locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {

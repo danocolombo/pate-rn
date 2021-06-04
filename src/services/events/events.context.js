@@ -2,6 +2,7 @@ import React, { useState, createContext, useEffect, useContext } from "react";
 
 import { eventsRequest, eventsTransform } from "./events.service";
 import { LocationContext } from "../location/location.context";
+import { locationRequest } from "../location/location.service";
 
 export const EventsContext = createContext();
 
@@ -18,6 +19,7 @@ export const EventsContextProvider = ({ children }) => {
   const retrieveActiveEvents = (loc) => {
     setIsLoading(true);
     setEvents([]);
+    console.log("events.context::retrieveActiveEvents(" + loc + ")");
     //setTimeout is only simulating API call, not necessary when using API
     setTimeout(() => {
       eventsRequest(loc)
@@ -36,6 +38,10 @@ export const EventsContextProvider = ({ children }) => {
   useEffect(() => {
     if (location) {
       const locationString = `${location.lat},${location.lng}`;
+      retrieveActiveEvents(locationString);
+    } else {
+      console.log("events.context - no location");
+      const locationString = "getActiveEvents";
       retrieveActiveEvents(locationString);
     }
   }, [location]);

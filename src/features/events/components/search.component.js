@@ -18,7 +18,7 @@ export const Search = () => {
         placeholder="Search for an event"
         value={searchKeyword}
         onSubmitEditing={() => {
-          console.log(searchKeyword);
+          console.log("searchKeyword:" + searchKeyword);
           search(searchKeyword);
         }}
         onChangeText={(text) => {
