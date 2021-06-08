@@ -32,8 +32,9 @@ export const EventsScreen = ({ navigation }) => {
   const { isLoading, events } = useContext(EventsContext);
   //next console.log should spit out the events defined in context.
   //console.log(error);
-  //console.log(eventContext);
-  //console.log(navigation);
+  // console.log(eventContext);
+  console.log("NAVIGATION:", navigation);
+  console.log("EVENTS:", events);
   return (
     <EventsSafeAreaView>
       {isLoading && (
