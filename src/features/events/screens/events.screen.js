@@ -33,8 +33,8 @@ export const EventsScreen = ({ navigation }) => {
   //next console.log should spit out the events defined in context.
   //console.log(error);
   // console.log(eventContext);
-  console.log("NAVIGATION:", navigation);
-  console.log("EVENTS:", events);
+  // console.log("NAVIGATION:", navigation);
+  // console.log("EVENTS:", events);
   return (
     <EventsSafeAreaView>
       {isLoading && (

@@ -18,7 +18,7 @@ export const EventsContextProvider = ({ children }) => {
   const retrieveActiveEvents = (loc) => {
     setIsLoading(true);
     setEvents([]);
-    console.log("events.context::retrieveActiveEvents(" + loc + ")");
+    // console.log("events.context::retrieveActiveEvents(" + loc + ")");
     //setTimeout is only simulating API call, not necessary when using API
     setTimeout(() => {
       eventsRequest(loc)
