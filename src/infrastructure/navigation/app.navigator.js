@@ -7,14 +7,8 @@ import { EventsNavigator } from "../navigation/events.navigator";
 
 import { Profile } from "../../features/profile/screens/profile.screen";
 import { SafeArea } from "../../components/utility/safe-area.component";
-
+import { MapScreen } from "../../features/map/screens/map.screen";
 const Tab = createBottomTabNavigator();
-
-const Map = () => (
-  <SafeArea>
-    <Text>Map</Text>
-  </SafeArea>
-);
 
 function ProfileScreen() {
   return <Profile />;
@@ -44,7 +38,7 @@ export const AppNavigator = () => {
         }}
       >
         <Tab.Screen name="Events" component={EventsNavigator} />
-        <Tab.Screen name="Map" component={Map} />
+        <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </NavigationContainer>
