@@ -23,13 +23,12 @@ export const MapScreen = () => {
   const { location } = useContext(LocationContext);
   const { events } = useContext(EventsContext);
   const [latDelta, setLatDelta] = useState(0);
-  const { viewport } = location;
-  console.log("VIEWPORT:", viewport);
-  useEffect(() => {
-    const northeastLat = viewport?.norteast?.lat;
-    const southwestLat = viewport?.southwest?.lat;
-
-  }, [location, viewport]);
+  // const { viewport } = location;
+  // console.log("VIEWPORT:", viewport);
+  // useEffect(() => {
+  // const northeastLat = viewport?.norteast?.lat;
+  // const southwestLat = viewport?.southwest?.lat;
+  // }, [location, viewport]);
   return (
     <>
       <Search />

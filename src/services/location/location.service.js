@@ -21,5 +21,5 @@ export const locationTransform = (result) => {
   // console.log("LAT:" + lat);
   // console.log("LNG:" + lng);
   // return geometry;
-  return { lat, lng, viewport: geometry.viewport };
+  return { lat, lng };
 };
