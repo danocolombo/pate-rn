@@ -36,7 +36,7 @@ export const LocationContextProvider = ({ children }) => {
       return;
     }
     // console.log("location.service:: we got keyword (" + keyword + ")");
-    locationRequest(keyword.toLowerCase())
+    locationRequest(keyword.trim().toLowerCase())
       .then(locationTransform)
       .then((result) => {
         setIsLoading(false);
