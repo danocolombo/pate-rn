@@ -2,6 +2,7 @@ import React, { useState, createContext, useEffect, useContext } from "react";
 
 import { eventsRequest, eventsTransform } from "./events.service";
 import { LocationContext } from "../location/location.context";
+// import { locations } from "../location/p8.location.mock";
 
 export const EventsContext = createContext();
 
@@ -37,6 +38,7 @@ export const EventsContextProvider = ({ children }) => {
   useEffect(() => {
     if (location) {
       const locationString = `${location.lat},${location.lng}`;
+      console.log("event.context::useEffect.locationString: " + locationString);
       retrieveActiveEvents(locationString);
     } else {
       console.log("events.context - no location");
