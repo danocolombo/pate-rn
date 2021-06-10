@@ -4,13 +4,11 @@ import { locations } from "./p8.location.mock";
 
 export const locationRequest = (searchTerm) => {
   return new Promise((resolve, reject) => {
-    console.log("location.services::locationRequest(" + searchTerm + ")");
+    // console.log("location.services::locationRequest(" + searchTerm + ")");
     const locationMock = locations[searchTerm];
     if (!locationMock) {
       reject("not found");
     }
-    console.log("we found it");
-    console.log("locationMock:", locationMock);
     resolve(locationMock);
   });
 };
