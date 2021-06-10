@@ -2,7 +2,7 @@
   "statusCode": 200,
   "body": [
     {
-      "geocode": "34.1724388,-83.8384051",
+      "geocode": "34.1724189,-83.8361158",
       "meal": {
         "startTime": "12:00",
         "mealCount": 10,

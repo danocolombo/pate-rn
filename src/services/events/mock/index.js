@@ -13,6 +13,6 @@ export const genericMocks = {
   sanFran: san_francisco,
   blueRidge: blueRidge,
   chestnut: chestnut,
-  "34.1724388,-83.8384051": chestnut,
-  "34.8941,-84.3505887": blueRidge,
+  "34.1724189,-83.8361158": chestnut,
+  "34.8941975,-84.34837159999999": blueRidge,
 };
