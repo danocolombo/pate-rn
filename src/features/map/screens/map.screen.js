@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Dimensions } from "react-native";
 import MapView from "react-native-maps";
+import { MapCallout } from "../components/map-callout.component";
 import styled from "styled-components/native";
 import { Search } from "../components/search.component";
 import { EventsContext } from "../../../services/events/events.context";
@@ -51,15 +52,22 @@ export const MapScreen = () => {
         {events.map((event) => {
           console.log("LATDELTA:" + latDelta);
           console.log("EVENT:\n", event);
-          return null;
+          return (
+            <MapView.Marker
+              key={event.uid}
+              title={event.name}
+              coordinate={{
+                latitude: event.geometry.location.lat,
+                longitude: event.geometry.location.lng,
+              }}
+            >
+              <MapView.Callout>
+                <MapCallout event={event} />
+              </MapView.Callout>
+            </MapView.Marker>
+          );
         })}
       </Map>
     </>
   );
 };
-{
-  /*
-  
-
-*/
-}

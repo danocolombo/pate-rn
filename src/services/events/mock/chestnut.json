@@ -3,6 +3,33 @@
   "body": [
     {
       "geocode": "34.1724189,-83.8361158",
+      "geometry": {
+          "bounds": {
+            "northeast": {
+              "lat": 34.1726557,
+              "lng": -83.8354976
+            },
+            "southwest": {
+              "lat": 34.1721757,
+              "lng": -83.83690109999999
+            }
+          },
+          "location": {
+            "lat": 34.1724189,
+            "lng": -83.8361158
+          },
+          "location_type": "ROOFTOP",
+          "viewport": {
+            "northeast": {
+              "lat": 34.1737646802915,
+              "lng": -83.83485036970849
+            },
+            "southwest": {
+              "lat": 34.1710667197085,
+              "lng": -83.83754833029151
+            }
+          }
+        },
       "meal": {
         "startTime": "12:00",
         "mealCount": 10,
