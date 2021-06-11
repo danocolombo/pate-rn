@@ -1,37 +1,4 @@
 export const locations = {
-  "blue ridge": {
-    results: [
-      {
-        geometry: {
-          bounds: {
-            northeast: {
-              lat: 34.894532,
-              lng: -84.34801689999999,
-            },
-            southwest: {
-              lat: 34.8939784,
-              lng: -84.34866579999999,
-            },
-          },
-          location: {
-            lat: 34.8941975,
-            lng: -84.34837159999999,
-          },
-          location_type: "ROOFTOP",
-          viewport: {
-            northeast: {
-              lat: 34.8956041802915,
-              lng: -84.34699236970849,
-            },
-            southwest: {
-              lat: 34.8929062197085,
-              lng: -84.34969033029149,
-            },
-          },
-        },
-      },
-    ],
-  },
   newnan: {
     results: [
       {
@@ -92,6 +59,39 @@ export const locations = {
             southwest: {
               lat: 34.1710667197085,
               lng: -83.83754833029151,
+            },
+          },
+        },
+      },
+    ],
+  },
+  "blue ridge": {
+    results: [
+      {
+        geometry: {
+          bounds: {
+            northeast: {
+              lat: 34.894532,
+              lng: -84.34801689999999,
+            },
+            southwest: {
+              lat: 34.8939784,
+              lng: -84.34866579999999,
+            },
+          },
+          location: {
+            lat: 34.8941975,
+            lng: -84.34837159999999,
+          },
+          location_type: "ROOFTOP",
+          viewport: {
+            northeast: {
+              lat: 34.8956041802915,
+              lng: -84.34699236970849,
+            },
+            southwest: {
+              lat: 34.8929062197085,
+              lng: -84.34969033029149,
             },
           },
         },

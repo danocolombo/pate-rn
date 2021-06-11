@@ -9,17 +9,24 @@ export const locationRequest = (searchTerm) => {
     if (!locationMock) {
       reject("not found");
     }
+    //==========================
+    //value from p8.locations search
+    //===============================
+    console.log(
+      "location.service - p8.location search results\n",
+      locationMock
+    );
     resolve(locationMock);
   });
 };
 
 export const locationTransform = (result) => {
-  console.log("result to be transformed", result);
+  console.log("result to be transformed:", result);
   const formattedResponse = camelize(result);
   const { geometry = {} } = formattedResponse.results[0];
   const { lat, lng } = geometry.location;
-  console.log("LAT:" + lat);
-  console.log("LNG:" + lng);
+  console.log("location.service LAT:" + lat);
+  console.log("location.service LNG:" + lng);
   // return geometry;
   return { lat, lng };
 };
