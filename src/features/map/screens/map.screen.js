@@ -23,20 +23,43 @@ export const MapScreen = () => {
   const { location } = useContext(LocationContext);
   const { events } = useContext(EventsContext);
   const [latDelta, setLatDelta] = useState(0);
-  // const { viewport } = location;
+  const { lat, lng, viewport } = location;
   // console.log("VIEWPORT:", viewport);
-  // useEffect(() => {
-  // const northeastLat = viewport?.norteast?.lat;
-  // const southwestLat = viewport?.southwest?.lat;
-  // }, [location, viewport]);
+  useEffect(() => {
+    if (viewport) {
+      console.log("VIEWPORT:", viewport);
+      const northeastLat = viewport?.northeast?.lat;
+      const southwestLat = viewport?.southwest?.lat;
+      console.log("northeastLat:" + northeastLat);
+      console.log("southwestLat:" + southwestLat);
+      setLatDelta(northeastLat - southwestLat);
+    } else {
+      setLatDelta(0);
+    }
+  }, [location, viewport]);
   return (
     <>
       <Search />
-      <Map>
+      <Map
+        region={{
+          latitude: lat,
+          longitude: lng,
+          latitudeDelta: latDelta,
+          longitudeDelta: 0.02,
+        }}
+      >
         {events.map((event) => {
+          console.log("LATDELTA:" + latDelta);
+          console.log("EVENT:\n", event);
           return null;
         })}
       </Map>
     </>
   );
 };
+{
+  /*
+  
+
+*/
+}
