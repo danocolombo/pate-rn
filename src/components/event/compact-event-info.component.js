@@ -1,8 +1,15 @@
 import React from "react";
 
 import styled from "styled-components/native";
-import { Text } from "../../components/typography/text.component";
+import { WebView } from "react-native-webview";
+import { Text } from "../typography/text.component";
+import { Platform } from "react-native";
 const CompactImage = styled.Image`
+  border-radius: 10px;
+  width: 120px;
+  height: 100px;
+`;
+const CompactWebview = styled(WebView)`
   border-radius: 10px;
   width: 120px;
   height: 100px;
@@ -17,11 +24,14 @@ const EventName = styled.Text`
   font-weight: bold;
   align-items: center;
 `;
+
+const isAndroid = Platform.OS === "android";
 export const CompactEventInfo = ({ event }) => {
+  const Image = isAndroid ? CompactWebview : CompactImage;
   return (
     <>
       <Item>
-        <CompactImage source={{ uri: event.graphic }} />
+        <Image source={{ uri: event.graphic }} />
         <EventName>{event.name}</EventName>
       </Item>
     </>
