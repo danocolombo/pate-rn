@@ -1,12 +1,11 @@
 import React from "react";
-import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { EventsNavigator } from "../navigation/events.navigator";
 
 import { Profile } from "../../features/profile/screens/profile.screen";
-import { SafeArea } from "../../components/utility/safe-area.component";
+//import { SafeArea } from "../../components/utility/safe-area.component";
 import { MapScreen } from "../../features/map/screens/map.screen";
 const Tab = createBottomTabNavigator();
 

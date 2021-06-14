@@ -41,8 +41,9 @@ export const EventsContextProvider = ({ children }) => {
       console.log("event.context::useEffect.locationString: " + locationString);
       retrieveActiveEvents(locationString);
     } else {
-      console.log("events.context - no location");
-      const locationString = "getActiveEvents";
+      //no location defined, display all activeEvents
+      console.log("events.context - defaulting to Blue Ridge");
+      const locationString = "34.8941975,-84.3483716";
       retrieveActiveEvents(locationString);
     }
   }, [location]);

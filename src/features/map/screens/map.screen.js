@@ -20,11 +20,12 @@ const Map = styled(MapView)`
   width: 100%;
 `;
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { events } = useContext(EventsContext);
   const [latDelta, setLatDelta] = useState(0);
   const { lat, lng, viewport } = location;
+  // const [eventsToDisplay, setEventsToDisplay] = useState(false);
   // console.log("VIEWPORT:", viewport);
   useEffect(() => {
     if (viewport) {
@@ -61,7 +62,11 @@ export const MapScreen = () => {
                 longitude: event.geometry.location.lng,
               }}
             >
-              <MapView.Callout>
+              <MapView.Callout
+                onPress={() =>
+                  navigation.navigate("EventDetail", { rally: event })
+                }
+              >
                 <MapCallout event={event} />
               </MapView.Callout>
             </MapView.Marker>
