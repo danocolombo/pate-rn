@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { EventsContext } from "../../../services/events/events.context";
+import { FavoritesContext } from "../../../services/favorites/favorites.context";
 import { Search } from "../components/search.component";
 import { EventInfoCard } from "../components/event-card.component";
 
@@ -30,6 +31,8 @@ const EventList = styled(FlatList).attrs({
 })``;
 export const EventsScreen = ({ navigation }) => {
   const { isLoading, events } = useContext(EventsContext);
+  const { favorites } = useContext(FavoritesContext);
+
   //next console.log should spit out the events defined in context.
   //console.log(error);
   // console.log(eventContext);
