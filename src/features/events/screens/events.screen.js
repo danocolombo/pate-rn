@@ -3,6 +3,7 @@ import { StatusBar, FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
 import { ActivityIndicator, Colors } from "react-native-paper";
+import { Favorite } from "../../../components/favorites/favorite.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { EventsContext } from "../../../services/events/events.context";
 import { FavoritesContext } from "../../../services/favorites/favorites.context";
