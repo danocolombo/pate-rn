@@ -9,6 +9,7 @@ import React from "react";
 import styled from "styled-components/native";
 //import { Text, StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
+import { Favorite } from "../../../components/favorites/favorite.component";
 
 const EventCard = styled(Card)`
   background-color: white;
@@ -58,6 +59,7 @@ export const EventInfoCard = ({ rally = {} }) => {
   return (
     <>
       <EventCard elevation={5}>
+        <Favorite />
         <EventCardCover key={churchName} source={{ uri: graphic }} />
         {/*<AmplifyS3Image style={{ "--width": "100%" }} imgKey={graphic} />*/}
         {/*<RallyCardCoverImage imgKey={graphic} key={churchName}/>*/}

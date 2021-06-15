@@ -16,6 +16,7 @@ const ContactTitle = styled.Text`
 export const EventDetailScreen = ({ route }) => {
   const { rally } = route.params;
   const [locationExpanded, setLocationExpanded] = useState(false);
+  const [dateTimeExpanded, setDateTimeExpanded] = useState(false);
   const [mapExpanded, setMapExpanded] = useState(false);
   const [contactsExpanded, setContactsExpanded] = useState(false);
   return (
@@ -34,8 +35,8 @@ export const EventDetailScreen = ({ route }) => {
         <List.Accordion
           title="Date & Time"
           left={(props) => <List.Icon {...props} icon="clock" />}
-          expanded={locationExpanded}
-          onPress={() => setLocationExpanded(!locationExpanded)}
+          expanded={dateTimeExpanded}
+          onPress={() => setDateTimeExpanded(!dateTimeExpanded)}
         >
           <Text>{rally.eventDate}</Text>
           <Text>Start Time: {rally.startTime}</Text>

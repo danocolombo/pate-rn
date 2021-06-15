@@ -1,21 +1,23 @@
-import { mocks, genericMocks, singleMocks } from "./mock";
+import { genericMocks } from "./mock";
 
-export const eventRequest = (uid = "cd993db1307d41030ce662bdaa7cb074") => {
-  return new Promise((resolve, reject) => {
-    const mock = singleMocks[uid];
-    if (!mock) {
-      reject("event not found");
-    }
-    resolve(mock);
-  });
-};
+// export const eventRequest = (uid = "cd993db1307d41030ce662bdaa7cb074") => {
+//   return new Promise((resolve, reject) => {
+//     const mock = singleMocks[uid];
+//     if (!mock) {
+//       reject("event not found");
+//     }
+//     resolve(mock);
+//   });
+// };
 //getActiveEvents
 export const eventsRequest = (operation) => {
+  console.log("operation: ", operation);
   return new Promise((resolve, reject) => {
     const mock = genericMocks[operation];
     if (!mock) {
       reject("no active events");
     }
+    console.log("events.service:eventsRequest(" + operation + "): ", mock);
     resolve(mock);
   });
 };

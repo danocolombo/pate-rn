@@ -17,6 +17,7 @@ import { Navigation } from "./src/infrastructure/navigation";
 //++++++++++++++++++++++
 import { EventsContextProvider } from "./src/services/events/events.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -28,12 +29,14 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <EventsContextProvider>
-            <Navigation />
-          </EventsContextProvider>
-        </LocationContextProvider>
-        <ExpoStatusBar style="auto" />
+        <FavoritesContextProvider>
+          <LocationContextProvider>
+            <EventsContextProvider>
+              <Navigation />
+            </EventsContextProvider>
+          </LocationContextProvider>
+          <ExpoStatusBar style="auto" />
+        </FavoritesContextProvider>
       </ThemeProvider>
     </>
   );

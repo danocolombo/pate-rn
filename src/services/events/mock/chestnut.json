@@ -2,7 +2,34 @@
   "statusCode": 200,
   "body": [
     {
-      "geocode": "34.1724388,-83.8384051",
+      "geocode": "34.1724189,-83.8361158",
+      "geometry": {
+          "bounds": {
+            "northeast": {
+              "lat": 34.1726557,
+              "lng": -83.8354976
+            },
+            "southwest": {
+              "lat": 34.1721757,
+              "lng": -83.83690109999999
+            }
+          },
+          "location": {
+            "lat": 34.1724189,
+            "lng": -83.8361158
+          },
+          "location_type": "ROOFTOP",
+          "viewport": {
+            "northeast": {
+              "lat": 34.1737646802915,
+              "lng": -83.83485036970849
+            },
+            "southwest": {
+              "lat": 34.1710667197085,
+              "lng": -83.83754833029151
+            }
+          }
+        },
       "meal": {
         "startTime": "12:00",
         "mealCount": 10,
@@ -21,7 +48,7 @@
       "message": "We are excited to offer the first rally have the Covid-19 pandemic",
       "stateProv": "GA",
       "coordinator": {
-        "name": "Ronald Coleman",
+        "name": "Ron CHESTNUT Coleman",
         "id": "0a28050e-5639-4756-86de-6564dfe50b93",
         "phone": "678-2235129",
         "email": "crrepcoleman@gmail.com"

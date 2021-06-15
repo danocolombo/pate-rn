@@ -2,6 +2,7 @@ import React, { useState, createContext, useEffect, useContext } from "react";
 
 import { eventsRequest, eventsTransform } from "./events.service";
 import { LocationContext } from "../location/location.context";
+// import { locations } from "../location/p8.location.mock";
 
 export const EventsContext = createContext();
 
@@ -18,7 +19,7 @@ export const EventsContextProvider = ({ children }) => {
   const retrieveActiveEvents = (loc) => {
     setIsLoading(true);
     setEvents([]);
-    console.log("events.context::retrieveActiveEvents(" + loc + ")");
+    // console.log("events.context::retrieveActiveEvents(" + loc + ")");
     //setTimeout is only simulating API call, not necessary when using API
     setTimeout(() => {
       eventsRequest(loc)
@@ -37,10 +38,12 @@ export const EventsContextProvider = ({ children }) => {
   useEffect(() => {
     if (location) {
       const locationString = `${location.lat},${location.lng}`;
+      console.log("event.context::useEffect.locationString: " + locationString);
       retrieveActiveEvents(locationString);
     } else {
-      console.log("events.context - no location");
-      const locationString = "getActiveEvents";
+      //no location defined, display all activeEvents
+      console.log("events.context - defaulting to Blue Ridge");
+      const locationString = "34.8941975,-84.3483716";
       retrieveActiveEvents(locationString);
     }
   }, [location]);
