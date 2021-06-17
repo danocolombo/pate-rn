@@ -59,7 +59,7 @@ export const EventInfoCard = ({ rally = {} }) => {
   return (
     <>
       <EventCard elevation={5}>
-        <Favorite />
+        {/*<Favorite />*/}
         <EventCardCover key={churchName} source={{ uri: graphic }} />
         {/*<AmplifyS3Image style={{ "--width": "100%" }} imgKey={graphic} />*/}
         {/*<RallyCardCoverImage imgKey={graphic} key={churchName}/>*/}
