@@ -18,6 +18,7 @@ import { Navigation } from "./src/infrastructure/navigation";
 import { EventsContextProvider } from "./src/services/events/events.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyA1BXUGHDi7MAiSUp47F3956qeXjSOB-Gw",
@@ -31,19 +32,6 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  useEffect(() => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword("fortsonguru@gmail.com", "test123")
-      .then((user) => {
-        console.log("FIREBASE_USER: authenticated");
-        setIsAuthenticated(true);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
   const [latoLoaded] = useLato({ Lato_400Regular });
 
@@ -53,15 +41,17 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavoritesContextProvider>
-          <LocationContextProvider>
-            <EventsContextProvider>
-              <Navigation />
-            </EventsContextProvider>
-          </LocationContextProvider>
-          <ExpoStatusBar style="auto" />
-        </FavoritesContextProvider>
+        <AuthenticationContextProvider>
+          <FavoritesContextProvider>
+            <LocationContextProvider>
+              <EventsContextProvider>
+                <Navigation />
+              </EventsContextProvider>
+            </LocationContextProvider>
+          </FavoritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
+      <ExpoStatusBar style="auto" />
     </>
   );
 }
