@@ -27,6 +27,7 @@ export const AppNavigator = () => {
             } else if (route.name === "Profile") {
               iconName = "settings";
             }
+            console.log("TAB.NAVIGATOR (iconName):\n", iconName);
             // You can return any component that you like here!
             return <MaterialIcons name={iconName} size={size} color={color} />;
           },
