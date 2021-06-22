@@ -15,32 +15,29 @@ function ProfileScreen() {
 
 export const AppNavigator = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            if (route.name === "Events") {
-              iconName = "event";
-            } else if (route.name === "Map") {
-              iconName = "map";
-            } else if (route.name === "Profile") {
-              iconName = "settings";
-            }
-            console.log("TAB.NAVIGATOR (iconName):\n", iconName);
-            // You can return any component that you like here!
-            return <MaterialIcons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: "blue",
-          inactiveTintColor: "gray",
-        }}
-      >
-        <Tab.Screen name="Events" component={EventsNavigator} />
-        <Tab.Screen name="Map" component={MapScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          if (route.name === "Events") {
+            iconName = "event";
+          } else if (route.name === "Map") {
+            iconName = "map";
+          } else if (route.name === "Profile") {
+            iconName = "settings";
+          }
+          // You can return any component that you like here!
+          return <MaterialIcons name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: "blue",
+        inactiveTintColor: "gray",
+      }}
+    >
+      <Tab.Screen name="Events" component={EventsNavigator} />
+      <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
   );
 };
