@@ -3,6 +3,7 @@ import {
   AccountBackground,
   AccountContainer,
   AccountCover,
+  Title,
 } from "../components/account.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthButton } from "../components/account.styles";
@@ -11,6 +12,7 @@ export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
+      <Title>P8 Rally</Title>
       <AccountContainer>
         <AuthButton
           icon="lock-open-outline"

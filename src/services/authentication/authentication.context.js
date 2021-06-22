@@ -22,7 +22,24 @@ export const AuthenticationContextProvider = ({ children }) => {
         setError(e.toString());
       });
   };
-
+  const onRegister = (email, password, repeatedPassword) => {
+    //need to validate request before automatically adding user
+    if (password !== repeatedPassword) {
+      setError("Error: passwords do not match");
+      return;
+    }
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((u) => {
+        setUser(u);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        setIsLoading(false);
+        setError(e.toString());
+      });
+  };
   return (
     <AuthenticationContext.Provider
       value={{
@@ -31,6 +48,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         isLoading,
         error,
         onLogin,
+        onRegister,
       }}
     >
       {children}
