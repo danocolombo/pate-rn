@@ -15,9 +15,9 @@ import { Navigation } from "./src/infrastructure/navigation";
 //++++++++++++++++++++++
 // CONTEXT FOR APP
 //++++++++++++++++++++++
-import { EventsContextProvider } from "./src/services/events/events.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
+// import { EventsContextProvider } from "./src/services/events/events.context";
+// import { LocationContextProvider } from "./src/services/location/location.context";
+// import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 // Initialize Firebase
 const firebaseConfig = {
@@ -42,13 +42,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <FavoritesContextProvider>
-            <LocationContextProvider>
-              <EventsContextProvider>
-                <Navigation />
-              </EventsContextProvider>
-            </LocationContextProvider>
-          </FavoritesContextProvider>
+          <Navigation />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
