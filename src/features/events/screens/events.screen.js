@@ -9,6 +9,7 @@ import { EventsContext } from "../../../services/events/events.context";
 import { FavoritesContext } from "../../../services/favorites/favorites.context";
 import { Search } from "../components/search.component";
 import { EventInfoCard } from "../components/event-card.component";
+import { EventList } from "../components/event-list.styles";
 
 const EventsSafeAreaView = styled.SafeAreaView`
   flex: 1;
@@ -25,11 +26,11 @@ const LoadingContainer = styled.View`
   left: 50%;
 `;
 
-const EventList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
+// export const EventList = styled(FlatList).attrs({
+//   contentContainerStyle: {
+//     padding: 16,
+//   },
+// })``;
 export const EventsScreen = ({ navigation }) => {
   const { isLoading, events } = useContext(EventsContext);
   const { favorites } = useContext(FavoritesContext);
