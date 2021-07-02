@@ -12,7 +12,7 @@ const IdentityView = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
-export const Profile = () => {
+export const ProfileScreen = () => {
   const { onLogout } = useContext(AuthenticationContext);
   return (
     <ProfileSafeAreaView>
