@@ -1,7 +1,6 @@
 import { registrationsMocks } from "./mock";
 
-export const registrationsRequest = (operation) => {
-  console.log("operation: ", operation);
+export const registrationsRequest = () => {
   return new Promise((resolve, reject) => {
     const mock = registrationsMocks[operation];
     if (!mock) {

@@ -12,8 +12,10 @@ const NoRegistrationsArea = styled(SafeArea)`
   align-items: center;
   justify-content: center;
 `;
+
 export const RegistrationsScreen = ({ navigation }) => {
   const { registrations } = useContext(RegistrationsContext);
+  console.log("registrations:\n", registrations);
   return registrations.length ? (
     <SafeArea>
       <EventList

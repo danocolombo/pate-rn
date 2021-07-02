@@ -19,13 +19,13 @@ export const RegistrationsContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const { location } = useContext(LocationContext);
 
-  const retrieveRegistrations = (loc) => {
+  const retrieveRegistrations = () => {
     setIsLoading(true);
     setRegistrations([]);
-    // console.log("events.context::retrieveActiveEvents(" + loc + ")");
+    console.log("registrations.context::retrieveRegistrations");
     //setTimeout is only simulating API call, not necessary when using API
     setTimeout(() => {
-      registrationsRequest(loc)
+      registrationsRequest()
         .then(registrationsTransform)
         .then((results) => {
           setIsLoading(false);
@@ -39,19 +39,9 @@ export const RegistrationsContextProvider = ({ children }) => {
   };
   // ON MOUNT....
   useEffect(() => {
-    if (location) {
-      const locationString = `${location.lat},${location.lng}`;
-      console.log(
-        "registrations.context::useEffect.locationString: " + locationString
-      );
-      retrieveRegistrations(locationString);
-    } else {
-      //no location defined, display all activeEvents
-      console.log("registrations.context - defaulting to Blue Ridge");
-      const locationString = "34.8941975,-84.3483716";
-      retrieveRegistrations(locationString);
-    }
-  }, [location]);
+    // get the registrations for the current user
+    retrieveRegistrations();
+  }, []);
 
   return (
     <RegistrationsContext.Provider
