@@ -18,7 +18,9 @@ import { Navigation } from "./src/infrastructure/navigation";
 // import { EventsContextProvider } from "./src/services/events/events.context";
 // import { LocationContextProvider } from "./src/services/location/location.context";
 // import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
-import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+//import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+import { CognitoAuthContextProvider } from "./src/services/cognito/cognito-auth.context";
+
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyA1BXUGHDi7MAiSUp47F3956qeXjSOB-Gw",
@@ -41,9 +43,9 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AuthenticationContextProvider>
+        <CognitoAuthContextProvider>
           <Navigation />
-        </AuthenticationContextProvider>
+        </CognitoAuthContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { StatusBar, Button } from "react-native";
 import { Identity } from "../components/profile-identity.component";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-
+// import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { CognitoAuthContext } from "../../../services/cognito/cognito-auth.context";
 const ProfileSafeAreaView = styled.SafeAreaView`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
@@ -13,7 +13,7 @@ const IdentityView = styled.View`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 export const ProfileScreen = () => {
-  const { onLogout } = useContext(AuthenticationContext);
+  const { onLogout } = useContext(CognitoAuthContext);
   return (
     <ProfileSafeAreaView>
       <IdentityView>

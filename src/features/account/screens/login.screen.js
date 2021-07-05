@@ -11,12 +11,14 @@ import {
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+// import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { CognitoAuthContext } from "../../../services/cognito/cognito-auth.context";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, isLoading, error } = useContext(AuthenticationContext);
+  //const { onLogin, isLoading, error } = useContext(AuthenticationContext);
+  const { onLogin, isLoading, error } = useContext(CognitoAuthContext);
   return (
     <AccountBackground>
       <AccountCover />

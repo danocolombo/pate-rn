@@ -11,13 +11,13 @@ import {
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-
+// import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { CognitoAuthContext } from "../../../services/cognito/cognito-auth.context";
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
-  const { onRegister, isLoading, error } = useContext(AuthenticationContext);
+  const { onRegister, isLoading, error } = useContext(CognitoAuthContext);
   return (
     <AccountBackground>
       <AccountCover />
