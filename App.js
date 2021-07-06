@@ -2,6 +2,9 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components/native";
 import * as firebase from "firebase";
+import Amplify from "aws-amplify";
+import awsExports from "./src/aws-exports";
+Amplify.configure(awsExports);
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -18,7 +21,7 @@ import { Navigation } from "./src/infrastructure/navigation";
 // import { EventsContextProvider } from "./src/services/events/events.context";
 // import { LocationContextProvider } from "./src/services/location/location.context";
 // import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
-import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+import { CognitoAuthContextProvider } from "./src/services/cognito/cognito-auth.context";
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyA1BXUGHDi7MAiSUp47F3956qeXjSOB-Gw",
@@ -41,9 +44,9 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AuthenticationContextProvider>
+        <CognitoAuthContextProvider>
           <Navigation />
-        </AuthenticationContextProvider>
+        </CognitoAuthContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

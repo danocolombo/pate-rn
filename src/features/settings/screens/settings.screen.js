@@ -3,7 +3,7 @@ import { List, Avatar } from "react-native-paper";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { CognitoAuthContext } from "../../../services/cognito/cognito-auth.context";
 import styled from "styled-components/native";
 
 const SettingsItem = styled(List.Item)`
@@ -13,7 +13,7 @@ const AvatarContainer = styled.View`
   align-items: center;
 `;
 export const SettingsScreen = ({ navigation }) => {
-  const { onLogout, user } = useContext(AuthenticationContext);
+  const { onLogout, user } = useContext(CognitoAuthContext);
 
   return (
     <SafeArea>

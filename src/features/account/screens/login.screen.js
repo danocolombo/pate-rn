@@ -11,24 +11,25 @@ import {
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { CognitoAuthContext } from "../../../services/cognito/cognito-auth.context";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, isLoading, error } = useContext(AuthenticationContext);
+  const { onLogin, isLoading, error } = useContext(CognitoAuthContext);
   return (
     <AccountBackground>
       <AccountCover />
       <Title>P8 Rally</Title>
       <AccountContainer>
         <AuthInput
-          label="E-mail"
-          value={email}
-          textContentType="emailAddress"
-          keyboardType="email-address"
+          label="User Name"
+          value={userName}
+          textContentType="username"
+          keyboardType="default"
           autoCapitalize="none"
-          onChangeText={(u) => setEmail(u)}
+          onChangeText={(u) => setUserName(u)}
         />
         <Spacer size="large">
           <AuthInput
@@ -50,7 +51,7 @@ export const LoginScreen = ({ navigation }) => {
             <AuthButton
               icon="lock-open-outline"
               mode="contained"
-              onPress={() => onLogin(email, password)}
+              onPress={() => onLogin(userName, password)}
             >
               Login
             </AuthButton>

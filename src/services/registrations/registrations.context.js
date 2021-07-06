@@ -4,7 +4,7 @@ import {
   registrationsRequest,
   registrationsTransform,
 } from "./registrations.service";
-import { AuthenticationContext } from "../authentication/authentication.context";
+import { CognitoAuthContext } from "../cognito/cognito-auth.context";
 //import { LocationContext } from "../location/location.context";
 // import { locations } from "../location/p8.location.mock";
 
@@ -19,7 +19,7 @@ export const RegistrationsContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   //const { location } = useContext(LocationContext);
-  const { user } = useContext(AuthenticationContext);
+  const { user } = useContext(CognitoAuthContext);
 
   const retrieveRegistrations = (u) => {
     setIsLoading(true);

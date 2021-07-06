@@ -1,8 +1,8 @@
 import React, { useState, createContext } from "react";
 import * as firebase from "firebase";
 
-import { loginRequest } from "./authentication.service";
-
+import { loginRequest } from "./cognito-auth.service";
+import { cognitoLogin } from "./cognito-auth.service";
 export const CognitoAuthContext = createContext();
 
 export const CognitoAuthContextProvider = ({ children }) => {
@@ -11,8 +11,20 @@ export const CognitoAuthContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const onLogin = (email, password) => {
+    console.log("new login. will go to cognitoLogin soon");
+    // setIsLoading(true);
+    cognitoLogin(email, password)
+      .then((u) => {
+        console.log("successfully logged in");
+      })
+      .catch((e) => {
+        console.log("failed login:\n", e);
+      });
+  };
+
+  const onLogin1 = (userName, password) => {
     setIsLoading(true);
-    loginRequest(email, password)
+    loginRequest(userName, password)
       .then((u) => {
         setUser(u);
         setIsLoading(false);
