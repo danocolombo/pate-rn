@@ -4,3 +4,5 @@ export const loginRequest = (email, password) =>
   firebase.auth().signInWithEmailAndPassword(email, password);
 
 export const cognitoLogin = (email, password) => Auth.signIn(email, password);
+export const cognitoCompleteNewPassword = (userName, password, []) =>
+  Auth.completeNewPassword(userName, password, []);
