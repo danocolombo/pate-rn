@@ -19,17 +19,21 @@ export const RegistrationsContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   //const { location } = useContext(LocationContext);
-  const { user } = useContext(CognitoAuthContext);
+  const { user, session } = useContext(CognitoAuthContext);
 
   const retrieveRegistrations = (u) => {
+    // const { cogUser } = u;
     setIsLoading(true);
     setRegistrations([]);
-    console.log(
-      "registrations.context::retrieveRegistrations for " + u.user.uid
-    );
+
     //setTimeout is only simulating API call, not necessary when using API
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    console.log("context:user", user);
+    console.log("---------------------");
+    console.log("context:session", session);
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     setTimeout(() => {
-      registrationsRequest(u.user.uid)
+      registrationsRequest(u.CognitoUser.attributes.sub)
         .then(registrationsTransform)
         .then((results) => {
           setIsLoading(false);

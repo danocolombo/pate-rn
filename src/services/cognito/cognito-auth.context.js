@@ -1,17 +1,20 @@
 import React, { useState, createContext } from "react";
 import * as firebase from "firebase";
-
+import { Auth } from "aws-amplify";
 //import { loginRequest } from "./cognito-auth.service";
 import {
   cognitoLogin,
   loginRequest,
   cognitoCompleteNewPassword,
+  cognitoCurrentUserInfo,
+  cognitoCurrentSession,
 } from "./cognito-auth.service";
 export const CognitoAuthContext = createContext();
 
 export const CognitoAuthContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
+  const [session, setSession] = useState(null);
   const [error, setError] = useState(null);
 
   const onLogin = (userName, password) => {
@@ -48,6 +51,25 @@ export const CognitoAuthContextProvider = ({ children }) => {
         } else {
           // the user is good to go....
           console.log("successfully logged in");
+          // console.log("cognitoUser:\n", cognitoUser);
+          let currentUserInfo = {};
+          let currentSession = {};
+          async function getCurrentUserInfo() {
+            cognitoCurrentUserInfo.then((cui) => {
+              currentUserInfo = cui;
+            });
+          }
+          getCurrentUserInfo();
+          async function getCurrentSession() {
+            cognitoCurrentSession.then((cs) => {
+              currentSession = cs;
+            });
+          }
+          getCurrentSession();
+
+          setUser(currentUserInfo);
+          setSession(currentSession);
+          setIsLoading(false);
         }
 
         setIsLoading(false);
@@ -97,6 +119,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
       value={{
         isAuthenticated: !!user,
         user,
+        session,
         isLoading,
         error,
         onLogin,
