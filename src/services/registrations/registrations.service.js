@@ -6,9 +6,6 @@ export const registrationsRequest = (user) => {
     if (!mock) {
       reject("no active events");
     }
-    console.log(
-      "registrations.service:registrationsRequest(user:" + user + "): "
-    );
     resolve(mock);
   });
 };

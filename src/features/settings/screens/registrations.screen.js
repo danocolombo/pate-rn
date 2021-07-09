@@ -17,8 +17,6 @@ const NoRegistrationsArea = styled(SafeArea)`
 export const RegistrationsScreen = ({ navigation }) => {
   const { registrations } = useContext(RegistrationsContext);
   const { user } = useContext(CognitoAuthContext);
-  console.log("registrations:\n", registrations);
-  console.log("user:\n", user);
   return registrations.length ? (
     <SafeArea>
       <EventList
