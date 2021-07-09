@@ -80,23 +80,6 @@ export const CognitoAuthContextProvider = ({ children }) => {
                 return;
               });
           }
-          // let currentUserInfo = {};
-          // let currentSession = {};
-          // await Auth.currentUserInfo().then((u) => {
-          //   currentUserInfo = u;
-          // });
-          // saveUserInfo(currentUserInfo);
-          // currentSession = Auth.currentSession();
-          // saveCurrentSession(currentSession);
-          // async function getSession() {
-          //   await cognitoCurrentSession().then((cs) => {
-          //     currentSession = cs;
-          //     // setCogSession(cs);
-          //   });
-          // }
-          // getSession();
-          // setUser(currentUserInfo);
-          // setSession(currentSession);
           setIsLoading(false);
         })
         .catch((e) => {

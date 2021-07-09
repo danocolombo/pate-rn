@@ -14,6 +14,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { CognitoAuthContext } from "../../../services/cognito/cognito-auth.context";
 
 export const RegisterScreen = ({ navigation }) => {
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
@@ -23,6 +24,14 @@ export const RegisterScreen = ({ navigation }) => {
       <AccountCover />
       <Title>P8 Rally</Title>
       <AccountContainer>
+      <AuthInput
+          label="Username"
+          value={userName}
+          textContentType="username"
+          keyboardType="default"
+          autoCapitalize="none"
+          onChangeText={(u) => setUserName(u)}
+        />
         <AuthInput
           label="E-mail"
           value={email}
