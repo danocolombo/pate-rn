@@ -18,19 +18,20 @@ export const CognitoAuthContextProvider = ({ children }) => {
   // const [cogUser, setCogUser] = useState({});
   const [cogSession, setCogSession] = useState({});
   const [error, setError] = useState(null);
-  let cogUser = {};
-  const saveCogUser = (cu) => {
-    cogUser = {
-      userName: cu.username,
-      attributes: { sub: cu.attributes.sub, email: cu.attributes.email },
-    };
-  };
+  
+  // const saveCogUser = (cu) => {
+  //   cogUser = {
+  //     userName: cu.username,
+  //     attributes: { sub: cu.attributes.sub, email: cu.attributes.email },
+  //   };
+  // };
   const saveCogUserInfo = (cui) => {
     // const util = require("util");
     // console.log(
     //   "[--CUI--] cui:  \n" +
     //     util.inspect(cui, { showHidden: false, depth: null })
     // );
+    let cogUser = {};
     cogUser = {
       id: cui.id,
       userName: cui.username,
@@ -46,13 +47,18 @@ export const CognitoAuthContextProvider = ({ children }) => {
     setSession(cs);
   };
   const onLogin = async (userName, password) => {
-    console.log("new login. will go to cognitoLogin soon");
     setIsLoading(true);
     try {
       await cognitoLogin(userName, password)
         .then((cognitoUser) => {
           // console.log("cognitoUser:\n", cognitoUser);
           // saveCogUser(cognitoUser);
+          const util = require('util');
+          console.log(
+            "[--0000--] cognitoUser (response):  \n" +
+              util.inspect(cognitoUser, { showHidden: false, depth: null })
+          );
+
           if (cognitoUser.challengeName === "NEW_PASSWORD_REQUIRED") {
             const { requiredAttributes } = cognitoUser.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
             cognitoCompleteNewPassword(
@@ -84,15 +90,22 @@ export const CognitoAuthContextProvider = ({ children }) => {
         })
         .catch((e) => {
           setIsLoading(false);
-          setError(e);
-          console.log("failed login:\n", e);
+          setError(e.message);
+          console.log("failed cognitoLogin:\n", e);
         });
+      console.log(
+        "#################\nWE DID NOT FAIL\n#######################"
+      );
       // let currentUserInfo = {};
       // let currentSession = {};
       await Auth.currentUserInfo().then((cui) => {
-        saveCogUserInfo(cui);
+          saveCogUserInfo(cui);
+        })
+        .catch((e) => {
+          setIsLoading(false);
+          // setError(e);
+          console.log("failed currentUserInfo inquiry:\n", e);
       });
-
       await Auth.currentSession().then((cs) => {
         saveCogCurrentSession(cs);
       });
@@ -106,19 +119,6 @@ export const CognitoAuthContextProvider = ({ children }) => {
           break;
       }
     }
-  };
-
-  const onLogin1 = (userName, password) => {
-    setIsLoading(true);
-    loginRequest(userName, password)
-      .then((u) => {
-        setUser(u);
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        setError(e.toString());
-      });
   };
   const onRegister = (email, password, repeatedPassword) => {
     //need to validate request before automatically adding user
