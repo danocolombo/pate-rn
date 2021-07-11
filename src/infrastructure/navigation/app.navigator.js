@@ -44,6 +44,7 @@ export const AppNavigator = () => {
                 inactiveTintColor: "gray",
               }}
             >
+              {/* the following order is the order on bottom and default is first screen */}
               <Tab.Screen name="Events" component={EventsNavigator} />
               <Tab.Screen name="Map" component={MapScreen} />
               <Tab.Screen name="Profile" component={SettingsNavigator} />

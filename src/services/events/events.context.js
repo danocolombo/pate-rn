@@ -1,6 +1,11 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 
-import { eventsRequest, eventsTransform } from "./events.service";
+import {
+  eventsRequest,
+  eventsTransform,
+  eventsActive,
+  eventsTransform0,
+} from "./events.service";
 import { LocationContext } from "../location/location.context";
 // import { locations } from "../location/p8.location.mock";
 
@@ -12,6 +17,7 @@ export const EventsContext = createContext();
 // 3. any errors that might be experienced.
 export const EventsContextProvider = ({ children }) => {
   const [events, setEvents] = useState([]);
+  const [p8Events, setP8Events] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { location } = useContext(LocationContext);
@@ -23,7 +29,7 @@ export const EventsContextProvider = ({ children }) => {
     //setTimeout is only simulating API call, not necessary when using API
     setTimeout(() => {
       eventsRequest(loc)
-        .then(eventsTransform)
+        .then(eventsTransform0)
         .then((results) => {
           setIsLoading(false);
           setEvents(results);
@@ -34,6 +40,32 @@ export const EventsContextProvider = ({ children }) => {
         });
     }, 2000);
   };
+  const getActiveEvents = async () => {
+    // get all the active events to display
+    setIsLoading(true);
+    const pe = await eventsActive();
+    console.log("pe results:", pe);
+    // eventsActive()
+    //   .then((results) => {
+    //     console.log("made it past transform");
+    //     console.log("############################");
+    //     console.log(results);
+    //     console.log("############################");
+    //     setP8Events(results);
+    //     p8Events.map((pe) => {
+    //       console.log("p8Events.eventDate", pe.eventDate);
+    //     });
+    //     setIsLoading(false);
+    //     setEvents(results);
+    //     events.map((ev) => {
+    //       console.log("event::eventDate: ", ev.eventDate);
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     setIsLoading(false);
+    //     setError(err);
+    //   });
+  };
   // ON MOUNT....
   useEffect(() => {
     if (location) {
@@ -42,9 +74,9 @@ export const EventsContextProvider = ({ children }) => {
       retrieveActiveEvents(locationString);
     } else {
       //no location defined, display all activeEvents
-      console.log("events.context - defaulting to Blue Ridge");
-      const locationString = "34.8941975,-84.3483716";
-      retrieveActiveEvents(locationString);
+      getActiveEvents();
+      //const locationString = "34.8941975,-84.3483716";
+      // retrieveActiveEvents(locationString);
     }
   }, [location]);
 

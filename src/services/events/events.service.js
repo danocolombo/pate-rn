@@ -21,10 +21,54 @@ export const eventsRequest = (operation) => {
     resolve(mock);
   });
 };
+//eventsActive
+export const eventsActive = async () => {
+  // this gets the active events from database
+  console.log("events.service::eventsActive");
+  await fetch(
+    "https://j7qty6ijwg.execute-api.us-east-1.amazonaws.com/QA/events",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        // operation: "getAllActiveApprovedEvents",
+        operation: "getHistoricEvents",
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+      // const util = require("util");
+      // return new Promise((resolve, reject) => {
+      //   if (!data) {
+      //     reject("no active events");
+      //   }
+      //   console.log(
+      //     "[--SEES1_eventsActive(data)--] data:  \n" +
+      //       util.inspect(data, {
+      //         showHidden: false,
+      //         depth: null,
+      //       })
+      //   );
+      //   resolve(data.body);
+      //   // let p8s = [];
+      //   // p8s = data.body;
+      //   // // p8s.map((ev) => {
+      //   // //   console.log("eventDate: ", ev.eventDate);
+      //   // // });
+      //   // resolve(p8s);
+      // });
+    // });
+};
+
 //this following function cleans up the data received from the
 //datasource and transforms it for use in the app. Only used
 //when loading the context.
-export const eventsTransform = ({ body = [] }) => {
+export const eventsTransform0 = ({ body = [] }) => {
   const mappedResults = body.map((rally) => {
     //for each entry we want to transform data
     let fullGraphic = "https://pate-images.s3.amazonaws.com/" + rally.graphic;
@@ -33,6 +77,22 @@ export const eventsTransform = ({ body = [] }) => {
       transformedData: true,
       churchName: rally.name,
       graphic: fullGraphic,
+    };
+  });
+
+  return mappedResults;
+};
+
+//this following function cleans up the data received from the
+//datasource and transforms it for use in the app. Only used
+//when loading the context.
+export const eventsTransform = ({ body = [] }) => {
+  console.log("[SEES-transform--]");
+  const mappedResults = body.map((rally) => {
+    //for each entry we want to transform data
+    return {
+      ...rally,
+      transformedData: true,
     };
   });
 

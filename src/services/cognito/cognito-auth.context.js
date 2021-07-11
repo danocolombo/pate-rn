@@ -18,7 +18,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
   const [cogUser, setCogUser] = useState(false);
   const [cogSession, setCogSession] = useState({});
   const [error, setError] = useState(null);
-  
+
   // const saveCogUser = (cu) => {
   //   cogUser = {
   //     userName: cu.username,
@@ -54,7 +54,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
         .then((cognitoUser) => {
           // console.log("cognitoUser:\n", cognitoUser);
           // saveCogUser(cognitoUser);
-          const util = require('util');
+          const util = require("util");
           console.log(
             "[--0000--] cognitoUser (response):  \n" +
               util.inspect(cognitoUser, { showHidden: false, depth: null })
@@ -106,24 +106,26 @@ export const CognitoAuthContextProvider = ({ children }) => {
       // let currentUserInfo = {};
       // let currentSession = {};
       if (cogUser) {
-        console.log("[--5555--] - cogUser true")
-        await Auth.currentUserInfo().then((cui) => {
+        console.log("[--5555--] - cogUser true");
+        await Auth.currentUserInfo()
+          .then((cui) => {
             saveCogUserInfo(cui);
           })
           .catch((e) => {
             setIsLoading(false);
             // setError(e);
             console.log("failed currentUserInfo inquiry:\n", e);
-        });
+          });
       }
-      if (cogUser){
-        await Auth.currentSession().then((cs) => {
+      if (cogUser) {
+        await Auth.currentSession()
+          .then((cs) => {
             saveCogCurrentSession(cs);
           })
           .catch((e) => {
             setIsLoading(false);
             setError(e.toString());
-        });
+          });
       }
     } catch (err) {
       console.log("OUCH");

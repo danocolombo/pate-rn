@@ -1,5 +1,6 @@
+import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+
 import { ThemeProvider } from "styled-components/native";
 import * as firebase from "firebase";
 import Amplify from "aws-amplify";
