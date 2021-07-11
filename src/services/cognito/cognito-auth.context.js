@@ -15,7 +15,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState();
   const [session, setSession] = useState();
-  // const [cogUser, setCogUser] = useState({});
+  const [cogUser, setCogUser] = useState(false);
   const [cogSession, setCogSession] = useState({});
   const [error, setError] = useState(null);
   
@@ -48,6 +48,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
   };
   const onLogin = async (userName, password) => {
     setIsLoading(true);
+    setError(null);
     try {
       await cognitoLogin(userName, password)
         .then((cognitoUser) => {
@@ -58,7 +59,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
             "[--0000--] cognitoUser (response):  \n" +
               util.inspect(cognitoUser, { showHidden: false, depth: null })
           );
-
+          setCogUser(true);
           if (cognitoUser.challengeName === "NEW_PASSWORD_REQUIRED") {
             const { requiredAttributes } = cognitoUser.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
             cognitoCompleteNewPassword(
@@ -89,35 +90,43 @@ export const CognitoAuthContextProvider = ({ children }) => {
           setIsLoading(false);
         })
         .catch((e) => {
+          setUser(null);
           setIsLoading(false);
+          switch (e.code) {
+            case "UserNotFoundException":
+              setError(e.message);
+              break;
+            default:
+              setError("Login Error");
+              break;
+          }
           setError(e.message);
           console.log("failed cognitoLogin:\n", e);
         });
-      console.log(
-        "#################\nWE DID NOT FAIL\n#######################"
-      );
       // let currentUserInfo = {};
       // let currentSession = {};
-      await Auth.currentUserInfo().then((cui) => {
-          saveCogUserInfo(cui);
-        })
-        .catch((e) => {
-          setIsLoading(false);
-          // setError(e);
-          console.log("failed currentUserInfo inquiry:\n", e);
-      });
-      await Auth.currentSession().then((cs) => {
-        saveCogCurrentSession(cs);
-      });
-    } catch (err) {
-      switch (err) {
-        case "No current user":
-          setError("Authentication failed. Please check your credentials");
-          break;
-        default:
-          setError("Unknown error signing in.[" + error + "]");
-          break;
+      if (cogUser) {
+        console.log("[--5555--] - cogUser true")
+        await Auth.currentUserInfo().then((cui) => {
+            saveCogUserInfo(cui);
+          })
+          .catch((e) => {
+            setIsLoading(false);
+            // setError(e);
+            console.log("failed currentUserInfo inquiry:\n", e);
+        });
       }
+      if (cogUser){
+        await Auth.currentSession().then((cs) => {
+            saveCogCurrentSession(cs);
+          })
+          .catch((e) => {
+            setIsLoading(false);
+            setError(e.toString());
+        });
+      }
+    } catch (err) {
+      console.log("OUCH");
     }
   };
   const onRegister = (email, password, repeatedPassword) => {
@@ -140,7 +149,8 @@ export const CognitoAuthContextProvider = ({ children }) => {
   };
   const onLogout = () => {
     setUser(null);
-    firebase.auth().signOut();
+    Auth.signOut();
+    // firebase.auth().signOut();
   };
   return (
     <CognitoAuthContext.Provider
