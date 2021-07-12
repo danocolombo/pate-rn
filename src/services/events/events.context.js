@@ -43,28 +43,18 @@ export const EventsContextProvider = ({ children }) => {
   const getActiveEvents = async () => {
     // get all the active events to display
     setIsLoading(true);
-    const pe = await eventsActive();
-    console.log("pe results:", pe);
-    // eventsActive()
-    //   .then((results) => {
-    //     console.log("made it past transform");
-    //     console.log("############################");
-    //     console.log(results);
-    //     console.log("############################");
-    //     setP8Events(results);
-    //     p8Events.map((pe) => {
-    //       console.log("p8Events.eventDate", pe.eventDate);
-    //     });
-    //     setIsLoading(false);
-    //     setEvents(results);
-    //     events.map((ev) => {
-    //       console.log("event::eventDate: ", ev.eventDate);
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     setIsLoading(false);
-    //     setError(err);
-    //   });
+    eventsActive()
+      .then((results) => {
+        setIsLoading(false);
+        setEvents(results);
+        // events.map((ev) => {
+        //   console.log("event::eventDate: ", ev.eventDate);
+        // });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err);
+      });
   };
   // ON MOUNT....
   useEffect(() => {

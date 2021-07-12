@@ -44,16 +44,16 @@ const GraphicLocation = styled.Text`
 
 export const EventInfoCard = ({ rally = {} }) => {
   const {
-    uid = "cd993db1307d41030ce662bdaa7cb074",
-    eventDate = "20210522",
-    startTime = "13:00",
-    endTime = "1600",
-    churchName = "Calvary Chapel Blue Ridge",
-    street = "101 George Curtis Rd",
-    city = "Blue Ridge",
-    stateProv = "GA",
-    postalCode = "30513",
-    graphic = "https://pate-images.s3.amazonaws.com/BlueRidge-app.png",
+    uid = rally.uid,
+    eventDate = rally.eventDate,
+    startTime = rally.startTime,
+    endTime = rally.endTime,
+    churchName = rally.name,
+    street = rally.street,
+    city = rally.city,
+    stateProv = rally.stateProv,
+    postalCode = rally.postalCode,
+    graphic = "https://pate-images.s3.amazonaws.com/" + rally.graphic,
   } = rally;
 
   return (
