@@ -53,7 +53,9 @@ export const EventInfoCard = ({ rally = {} }) => {
     city = rally.city,
     stateProv = rally.stateProv,
     postalCode = rally.postalCode,
-    graphic = "https://pate-images.s3.amazonaws.com/" + rally.graphic,
+    graphic1 = "https://pate-images.s3.amazonaws.com/" + rally.graphic,
+    graphic = "https://pate20213723ed06531948b6a5a0b14d1c3fb499175248-dev.s3.amazonaws.com/public/events/" +
+      rally.graphic,
   } = rally;
 
   return (
