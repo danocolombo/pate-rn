@@ -3,6 +3,7 @@ import React, { useState, createContext, useEffect, useContext } from "react";
 import {
   eventsRequest,
   eventsTransform,
+  getSignedUrls,
   eventsActive,
   eventsTransform0,
 } from "./events.service";
@@ -42,14 +43,19 @@ export const EventsContextProvider = ({ children }) => {
   };
   const getActiveEvents = async () => {
     // get all the active events to display
+    // we want to add .then(getSignedUrls)
     setIsLoading(true);
     eventsActive()
-      .then((results) => {
+      .then(async (results) => {
         setIsLoading(false);
         setEvents(results);
-        // events.map((ev) => {
-        //   console.log("event::eventDate: ", ev.eventDate);
-        // });
+        console.log("BEFORE");
+        await getSignedUrls(events);
+        console.log("AFTER");
+        events.map((ev) => {
+          console.log("event::eventDate: ", ev.eventDate);
+          console.log("signedGraphicUrl:", ev.signedGraphicUrl);
+        });
       })
       .catch((err) => {
         setIsLoading(false);

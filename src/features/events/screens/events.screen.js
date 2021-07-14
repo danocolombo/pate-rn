@@ -51,7 +51,7 @@ export const EventsScreen = ({ navigation }) => {
       <EventList
         data={events}
         renderItem={({ item }) => {
-          console.log("[--ITEM--]", item);
+          //console.log("[--ITEM--]", item);
           return (
             <TouchableOpacity
               onPress={() =>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 // import { Storage } from "aws-amplify";
 // import { AmplifyS3Image } from "aws-amplify-react-native";
 // import Amplify from 'aws-amplify';
@@ -9,8 +9,8 @@ import React from "react";
 import styled from "styled-components/native";
 //import { Text, StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
-import { Favorite } from "../../../components/favorites/favorite.component";
-
+// import { Favorite } from "../../../components/favorites/favorite.component";
+// import { StorageContext } from "../../../services/storage/storage.context";
 const EventCard = styled(Card)`
   background-color: white;
   margin-bottom: 10px;
@@ -43,7 +43,8 @@ const GraphicLocation = styled.Text`
 `;
 
 export const EventInfoCard = ({ rally = {} }) => {
-  const {
+  // const {} = useContext(StorageContext);
+  let {
     uid = rally.uid,
     eventDate = rally.eventDate,
     startTime = rally.startTime,
@@ -54,15 +55,22 @@ export const EventInfoCard = ({ rally = {} }) => {
     stateProv = rally.stateProv,
     postalCode = rally.postalCode,
     graphic1 = "https://pate-images.s3.amazonaws.com/" + rally.graphic,
-    graphic = "https://pate20213723ed06531948b6a5a0b14d1c3fb499175248-dev.s3.amazonaws.com/public/events/" +
-      rally.graphic,
+    graphic = rally.graphic,
   } = rally;
 
   return (
     <>
       <EventCard elevation={5}>
         {/*<Favorite />*/}
-        <EventCardCover key={churchName} source={{ uri: graphic }} />
+        {/*<EventCardCover key={churchName} source={graphic} />*/}
+        {/*graphic && (
+          <img
+            src={graphic}
+            key={graphic}
+            style={{ width: 300, height: 200 }}
+          />
+        )*/}
+
         {/*<AmplifyS3Image style={{ "--width": "100%" }} imgKey={graphic} />*/}
         {/*<RallyCardCoverImage imgKey={graphic} key={churchName}/>*/}
         <Info>
@@ -70,7 +78,7 @@ export const EventInfoCard = ({ rally = {} }) => {
           <Address>
             {city}, {stateProv}
           </Address>
-          <GraphicLocation>{graphic}</GraphicLocation>
+          <GraphicLocation>graphic: {graphic}</GraphicLocation>
         </Info>
       </EventCard>
     </>

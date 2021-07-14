@@ -1,13 +1,13 @@
 /* eslint-disable react/self-closing-comp */
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ScrollView, Text } from "react-native";
 import { List } from "react-native-paper";
 import styled from "styled-components/native";
 
 import { EventInfoCard } from "../components/event-card.component";
-
+import { StorageContext } from "../../../services/storage/storage.context";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-
+//import { get } from "react-native/Libraries/Utilities/PixelRatio";
 const ContactTitle = styled.Text`
   font-weight: bold;
   font-size: 18px;
@@ -19,6 +19,14 @@ export const EventDetailScreen = ({ route }) => {
   const [dateTimeExpanded, setDateTimeExpanded] = useState(false);
   const [mapExpanded, setMapExpanded] = useState(false);
   const [contactsExpanded, setContactsExpanded] = useState(false);
+  const { getS3EventImage } = useContext(StorageContext);
+  useEffect(() => {
+    async function getImage() {
+      const gFile = getS3EventImage(rally.graphic);
+      rally.graphic = gFile;
+    }
+    getImage();
+  }, []);
   return (
     <SafeArea>
       <EventInfoCard rally={rally} />
