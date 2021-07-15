@@ -20,26 +20,12 @@ export const StorageContextProvider = ({ children }) => {
       "public/events/7c720d14382cde084f03be60d398a0c6EventSample2Day.png";
     let signedUrl = "";
     await Storage.get(tempImage).then((data) => {
-      console.log("DATA:", data);
+      // console.log("DATA:", data);
       signedUrl = data;
     });
-    console.log("SIGNED-SIGNED....\n", signedUrl);
     setEventImage(signedUrl);
   };
-  const getS3EventImages2 = async () => {
-    let imageKeys = await Storage.list("");
-    imageKeys = await Promise.all(
-      imageKeys.map(async (k) => {
-        const signedUrl = await Storage.get(k.key);
-        return signedUrl;
-      })
-    );
-    console.log("[--imageKeys[1]--]\n", imageKeys[1]);
-    setEventImages(imageKeys);
-    // console.log("[==eventImages count===] " + eventImages.length);
-  };
   useEffect(() => {
-    //getS3EventImages();
     getS3EventImage();
   }, []);
 
