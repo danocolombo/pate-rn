@@ -4,10 +4,7 @@ import { Auth } from "aws-amplify";
 //import { loginRequest } from "./cognito-auth.service";
 import {
   cognitoLogin,
-  loginRequest,
   cognitoCompleteNewPassword,
-  cognitoCurrentUserInfo,
-  cognitoCurrentSession,
 } from "./cognito-auth.service";
 export const CognitoAuthContext = createContext();
 
@@ -15,8 +12,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState();
   const [session, setSession] = useState();
-  const [cogUser, setCogUser] = useState(false);
-  const [cogSession, setCogSession] = useState({});
+  // const [cogUser, setCogUser] = useState(false);
   const [error, setError] = useState(null);
 
   // const saveCogUser = (cu) => {
@@ -54,17 +50,17 @@ export const CognitoAuthContextProvider = ({ children }) => {
         .then((cognitoUser) => {
           // console.log("cognitoUser:\n", cognitoUser);
           // saveCogUser(cognitoUser);
-          const util = require("util");
-          console.log(
-            "[--0000--] cognitoUser (response):  \n" +
-              util.inspect(cognitoUser, { showHidden: false, depth: null })
-          );
-          setUser(user);
-          setCogUser(true);
-          if (cogUser === false) {
-            setCogUser(true);
-          }
-          console.log("[--0001--] cogUser: ", cogUser);
+          // const util = require("util");
+          // console.log(
+          //   "[--0000--] cognitoUser (response):  \n" +
+          //     util.inspect(cognitoUser, { showHidden: false, depth: null })
+          // );
+          setUser(cognitoUser);
+          // setCogUser(true);
+          // if (cogUser === false) {
+          // setCogUser(true);
+          // }
+          console.log("[--0001--] user: ", user);
           if (cognitoUser.challengeName === "NEW_PASSWORD_REQUIRED") {
             const { requiredAttributes } = cognitoUser.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
             cognitoCompleteNewPassword(
@@ -110,28 +106,27 @@ export const CognitoAuthContextProvider = ({ children }) => {
         });
       // let currentUserInfo = {};
       // let currentSession = {};
-      if (cogUser) {
-        console.log("[--5555--] - cogUser true");
-        await Auth.currentUserInfo()
-          .then((cui) => {
-            saveCogUserInfo(cui);
-          })
-          .catch((e) => {
-            setIsLoading(false);
-            // setError(e);
-            console.log("failed currentUserInfo inquiry:\n", e);
-          });
-      }
-      if (cogUser) {
-        await Auth.currentSession()
-          .then((cs) => {
-            saveCogCurrentSession(cs);
-          })
-          .catch((e) => {
-            setIsLoading(false);
-            setError(e.toString());
-          });
-      }
+      // if (user) {
+      //   await Auth.currentUserInfo()
+      //     .then((cui) => {
+      //       saveCogUserInfo(cui);
+      //     })
+      //     .catch((e) => {
+      //       setIsLoading(false);
+      //       // setError(e);
+      //       console.log("failed currentUserInfo inquiry:\n", e);
+      //     });
+      // }
+      // if (cogUser) {
+      //   await Auth.currentSession()
+      //     .then((cs) => {
+      //       saveCogCurrentSession(cs);
+      //     })
+      //     .catch((e) => {
+      //       setIsLoading(false);
+      //       setError(e.toString());
+      //     });
+      // }
     } catch (err) {
       console.log("OUCH");
     }
