@@ -31,13 +31,13 @@ export const CognitoAuthContextProvider = ({ children }) => {
     //   "[--CUI--] cui:  \n" +
     //     util.inspect(cui, { showHidden: false, depth: null })
     // );
-    let cogUser = {};
-    cogUser = {
+    let cUser = {};
+    cUser = {
       id: cui.id,
       userName: cui.username,
       attributes: { sub: cui.attributes.sub, email: cui.attributes.email },
     };
-    setUser(cogUser);
+    setUser(cUser);
   };
   const saveCogCurrentSession = (cs) => {
     // const util = require("util");
@@ -59,7 +59,12 @@ export const CognitoAuthContextProvider = ({ children }) => {
             "[--0000--] cognitoUser (response):  \n" +
               util.inspect(cognitoUser, { showHidden: false, depth: null })
           );
+          setUser(user);
           setCogUser(true);
+          if (cogUser === false) {
+            setCogUser(true);
+          }
+          console.log("[--0001--] cogUser: ", cogUser);
           if (cognitoUser.challengeName === "NEW_PASSWORD_REQUIRED") {
             const { requiredAttributes } = cognitoUser.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
             cognitoCompleteNewPassword(

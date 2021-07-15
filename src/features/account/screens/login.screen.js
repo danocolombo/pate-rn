@@ -14,10 +14,13 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { CognitoAuthContext } from "../../../services/cognito/cognito-auth.context";
 
 export const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, isLoading, error } = useContext(CognitoAuthContext);
+  const { onLogin, isLoading, error, user, session } = useContext(CognitoAuthContext);
+  console.log("context stuff");
+  console.log("user:", user);
+  console.log("session:", session);
   return (
     <AccountBackground>
       <AccountCover />
