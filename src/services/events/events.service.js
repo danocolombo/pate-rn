@@ -16,11 +16,13 @@ export const eventsRequest = (operation) => {
 export const eventsActive = () => {
   // this gets the active events from database
   // console.log("[--SEES--] events.service::eventsActive");
+  // used getAllActiveApprovedEvents for testing.
+  // actual getAllActiveApprovedEvents
   return new Promise((resolve, reject) => {
     fetch("https://j7qty6ijwg.execute-api.us-east-1.amazonaws.com/QA/events", {
       method: "POST",
       body: JSON.stringify({
-        // operation: "getAllActiveApprovedEvents",
+        //operation: "getAllActiveApprovedEvents",
         operation: "getHistoricEvents",
       }),
       headers: {

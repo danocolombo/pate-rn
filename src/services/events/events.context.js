@@ -30,6 +30,17 @@ export const EventsContextProvider = ({ children }) => {
         setError(err);
       });
   };
+   const loadNoEvents = async () => {
+     //-------------------------------------
+     // this loads the generic "no events"
+     // into the events array
+     //-------------------------------------
+     const noEvents = {
+       graphic: "NoEvents.png",
+       churchName: "Check back again"
+     }
+     setEvents(noEvents);
+   }
   // ON MOUNT....
   useEffect(() => {
     if (location) {
@@ -42,6 +53,11 @@ export const EventsContextProvider = ({ children }) => {
     } else {
       //no location defined, display all activeEvents
       getActiveEvents();
+      //check the number of events active. If zero, set
+      //graphic to display "No Events"
+      console.log("[--0000--] events count: ", events.length);
+      console.log("[--0001--] events type: " + typeof events);
+      console.log("[--0002--] events:\n", events);
     }
   }, [location]);
 
@@ -50,6 +66,7 @@ export const EventsContextProvider = ({ children }) => {
       value={{
         events,
         isLoading,
+        loadNoEvents,
         error,
       }}
     >

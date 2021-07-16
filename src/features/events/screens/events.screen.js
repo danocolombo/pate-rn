@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StatusBar, FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
@@ -32,7 +32,7 @@ const LoadingContainer = styled.View`
 //   },
 // })``;
 export const EventsScreen = ({ navigation }) => {
-  const { isLoading, events } = useContext(EventsContext);
+  const { isLoading, events, loadNoEvents } = useContext(EventsContext);
   const { favorites } = useContext(FavoritesContext);
 
   //next console.log should spit out the events defined in context.
@@ -40,6 +40,18 @@ export const EventsScreen = ({ navigation }) => {
   // console.log(eventContext);
   // console.log("NAVIGATION:", navigation);
   // console.log("EVENTS:", events);
+  useEffect(() => {
+    //check the number of events available to display
+    // console.log("[--0003--] events.screen:\n", events);
+    // console.log("[--0004--] event count: ", events.length);
+    // if (events.length < 1){
+    //   //need to put generic "no events" into events array
+    //   async function notifyNone() {
+    //     loadNoEvents();
+    //   }
+    //   notifyNone();
+    // }
+  }, []);
   return (
     <EventsSafeAreaView>
       {isLoading && (
