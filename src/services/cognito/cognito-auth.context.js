@@ -20,6 +20,8 @@ export const CognitoAuthContextProvider = ({ children }) => {
       await cognitoLogin(userName, password)
         .then((cognitoUser) => {
           setUser(cognitoUser);
+          console.log("[--0009--] cognitoUser:\n", cognitoUser);
+          // console.log("[--0010--] sub:", user.attributes.sub);
           if (cognitoUser.challengeName === "NEW_PASSWORD_REQUIRED") {
             const { requiredAttributes } = cognitoUser.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
             cognitoCompleteNewPassword(
@@ -60,6 +62,15 @@ export const CognitoAuthContextProvider = ({ children }) => {
     } catch (err) {
       console.log("OUCH");
     }
+    console.log("[--abc--] sub:\n", user.attributes.sub);
+    try {
+      await getUserProfile(user.attributes.sub).then((profile) => {
+        setUserProfile(profile);
+        console.log("[--0007--] profile:\n", profile);
+      });
+    } catch (err) {
+      console.log("error getting profile\n:", err);
+    }
   };
   const onRegister = (email, password, repeatedPassword) => {
     //need to validate request before automatically adding user
@@ -78,6 +89,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
       value={{
         isAuthenticated: !!user,
         user,
+        userProfile,
         isLoading,
         error,
         onLogin,
