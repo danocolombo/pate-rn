@@ -19,7 +19,6 @@ export const CognitoAuthContextProvider = ({ children }) => {
     try {
       await cognitoLogin(userName, password)
         .then((cognitoUser) => {
-          setUser(cognitoUser);
           if (cognitoUser.challengeName === "NEW_PASSWORD_REQUIRED") {
             const { requiredAttributes } = cognitoUser.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
             cognitoCompleteNewPassword(
@@ -78,6 +77,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
       value={{
         isAuthenticated: !!user,
         user,
+        userProfile,
         isLoading,
         error,
         onLogin,
