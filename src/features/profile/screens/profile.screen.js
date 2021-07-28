@@ -13,11 +13,12 @@ const IdentityView = styled.View`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 export const ProfileScreen = () => {
-  const { onLogout } = useContext(CognitoAuthContext);
+  const { onLogout, user, userProfile } = useContext(CognitoAuthContext);
+
   return (
     <ProfileSafeAreaView>
       <IdentityView>
-        <Identity />
+        <Identity user={user} profile={userProfile} />
         <Button title="LOGOUT" onPress={() => onLogout()} />
       </IdentityView>
     </ProfileSafeAreaView>

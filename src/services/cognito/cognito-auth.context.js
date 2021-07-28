@@ -10,17 +10,29 @@ export const CognitoAuthContext = createContext();
 export const CognitoAuthContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState();
+  // const [userCreds setUserCreds] = useState();
   const [userProfile, setUserProfile] = useState();
   const [error, setError] = useState(null);
 
+  // const setUserCreds = async (uData) => {
+  //   setUser(uData);
+  // };
   const onLogin = async (userName, password) => {
     setIsLoading(true);
     setError(null);
+    let uid = "";
     try {
       await cognitoLogin(userName, password)
         .then((cognitoUser) => {
-          setUser(cognitoUser);
-          console.log("[--0009--] cognitoUser:\n", cognitoUser);
+          // setUser(cognitoUser?.CognitoUser);
+          async function setTheUser(cu) {
+            setUser(cu);
+          }
+          setTheUser(cognitoUser);
+          uid = cognitoUser?.attributes?.sub;
+          // console.log("[--0009--] cognitoUser:\n", cognitoUser);
+          // console.log("[--0010--] sub: ", cognitoUser?.attributes?.sub);
+          // console.log("[--0011--] uid:\n", uid);
           // console.log("[--0010--] sub:", user.attributes.sub);
           if (cognitoUser.challengeName === "NEW_PASSWORD_REQUIRED") {
             const { requiredAttributes } = cognitoUser.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
@@ -62,15 +74,23 @@ export const CognitoAuthContextProvider = ({ children }) => {
     } catch (err) {
       console.log("OUCH");
     }
-    console.log("[--abc--] sub:\n", user.attributes.sub);
+    console.log("[--0012--] uid:\n", uid);
     try {
-      await getUserProfile(user.attributes.sub).then((profile) => {
-        setUserProfile(profile);
-        console.log("[--0007--] profile:\n", profile);
+      await getUserProfile(uid).then((profile) => {
+        async function setProfileData(pd) {
+          setUserProfile(pd);
+        }
+        setProfileData(profile);
+        // setUserProfile(profile);
+        console.log("[--0013--] profile:\n", profile);
       });
     } catch (err) {
       console.log("error getting profile\n:", err);
     }
+    setIsLoading(false);
+    console.log("[--0014--] user:\n", user);
+    console.log("[--0015--] profile:\n", userProfile);
+    // console.log("[--0016--] count: \n");
   };
   const onRegister = (email, password, repeatedPassword) => {
     //need to validate request before automatically adding user
