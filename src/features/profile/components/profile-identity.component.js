@@ -35,6 +35,7 @@ export const Identity = ({ user = {}, profile = {} }) => {
           <ProfileName>
             {profile?.firstName} {profile?.lastName}
           </ProfileName>
+          <ProfileName>{"TEST"}</ProfileName>
           <AddressView>
             <AddressItem>{profile?.residence?.street}</AddressItem>
             <AddressItem>

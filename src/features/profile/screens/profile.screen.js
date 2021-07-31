@@ -14,7 +14,8 @@ const IdentityView = styled.View`
 `;
 export const ProfileScreen = () => {
   const { onLogout, user, userProfile } = useContext(CognitoAuthContext);
-
+  console.log("[--0030--] user:\n", user);
+  console.log("[--0031--] profile:\n", userProfile);
   return (
     <ProfileSafeAreaView>
       <IdentityView>

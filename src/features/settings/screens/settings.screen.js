@@ -13,15 +13,18 @@ const AvatarContainer = styled.View`
   align-items: center;
 `;
 export const SettingsScreen = ({ navigation }) => {
-  const { onLogout, user } = useContext(CognitoAuthContext);
-
+  const { onLogout, user, userProfile } = useContext(CognitoAuthContext);
+  console.log("[--0040--] user:\n", user);
+  console.log("[--0041--] profile:\n", userProfile);
   return (
     <SafeArea>
       <AvatarContainer>
         <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
         <Spacer position="top" size="large">
-          <Text variant="label">{user.userName}</Text>
-          <Text variant="label">{user.attributes.email}</Text>
+          <Text variant="label">
+            {userProfile?.firstName} {userProfile?.lastName}
+          </Text>
+          <Text variant="label">{user?.attributes?.email}</Text>
         </Spacer>
       </AvatarContainer>
       <List.Section>

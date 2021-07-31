@@ -78,7 +78,7 @@ export const CognitoAuthContextProvider = ({ children }) => {
     try {
       await getUserProfile(uid).then((profile) => {
         async function setProfileData(pd) {
-          setUserProfile(pd);
+          setUserProfile(pd?.Items[0]);
         }
         setProfileData(profile);
         // setUserProfile(profile);
