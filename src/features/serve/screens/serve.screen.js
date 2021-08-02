@@ -1,16 +1,15 @@
 import React, { useContext, useEffect } from "react";
-import { StatusBar, TouchableOpacity } from "react-native";
+import { StatusBar, FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
 import { ActivityIndicator, Colors } from "react-native-paper";
-
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { EventsContext } from "../../../services/events/events.context";
 import { Search } from "../components/search.component";
 import { EventInfoCard } from "../components/event-card.component";
-import { EventList } from "../components/event-list.styles";
+import { ServeList } from "../components/serve-list.styles";
 
-const EventsSafeAreaView = styled.SafeAreaView`
+const ServeSafeAreaView = styled.SafeAreaView`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
@@ -30,7 +29,7 @@ const LoadingContainer = styled.View`
 //     padding: 16,
 //   },
 // })``;
-export const EventsScreen = ({ navigation }) => {
+export const ServeScreen = ({ navigation }) => {
   const { isLoading, events, loadNoEvents } = useContext(EventsContext);
 
   //next console.log should spit out the events defined in context.
@@ -51,14 +50,14 @@ export const EventsScreen = ({ navigation }) => {
     // }
   }, []);
   return (
-    <EventsSafeAreaView>
+    <ServeSafeAreaView>
       {isLoading && (
         <LoadingContainer>
           <Loading size={50} animating={true} color={Colors.blue300} />
         </LoadingContainer>
       )}
       <Search />
-      <EventList
+      <ServeList
         data={events}
         renderItem={({ item }) => {
           //console.log("[--ITEM--]", item);
@@ -76,6 +75,6 @@ export const EventsScreen = ({ navigation }) => {
         }}
         keyExtractor={(item) => item.uid}
       />
-    </EventsSafeAreaView>
+    </ServeSafeAreaView>
   );
 };

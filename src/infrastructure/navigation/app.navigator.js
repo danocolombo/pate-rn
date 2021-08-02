@@ -32,20 +32,22 @@ export const AppNavigator = () => {
                     if (route.name === "Events") {
                       iconName = "event";
                     } else if (
-                      route.name === "Map" &&
+                      route.name === "Serve" &&
                       (userProfile?.stateRep || userProfile?.stateLead)
                     ) {
-                      iconName = "volunteer_activism";
+                      iconName = "volunteer-activism";
                     } else if (route.name === "Profile") {
                       iconName = "settings";
                     }
                     // You can return any component that you like here!
                     return (
-                      <MaterialIcons
-                        name={iconName}
-                        size={size}
-                        color={color}
-                      />
+                      <>
+                        <MaterialIcons
+                          name={iconName}
+                          size={size}
+                          color={color}
+                        />
+                      </>
                     );
                   },
                 })}

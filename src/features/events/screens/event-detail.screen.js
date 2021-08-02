@@ -6,6 +6,7 @@ import styled from "styled-components/native";
 
 import { EventInfoCard } from "../components/event-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
+
 //import { get } from "react-native/Libraries/Utilities/PixelRatio";
 const ContactTitle = styled.Text`
   font-weight: bold;
