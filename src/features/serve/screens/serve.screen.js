@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from "react";
 import { StatusBar, FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
-import { ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator, Colors, Title } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { EventsContext } from "../../../services/events/events.context";
-import { Search } from "../components/search.component";
-import { EventInfoCard } from "../components/event-card.component";
+// import { Search } from "../components/search.component";
+import { EventInfoCard } from "../../events/components/event-card.component";
 import { ServeList } from "../components/serve-list.styles";
 
 const ServeSafeAreaView = styled.SafeAreaView`
@@ -56,25 +56,28 @@ export const ServeScreen = ({ navigation }) => {
           <Loading size={50} animating={true} color={Colors.blue300} />
         </LoadingContainer>
       )}
-      <Search />
+      <Title>SERVE</Title>
       <ServeList
         data={events}
         renderItem={({ item }) => {
           //console.log("[--ITEM--]", item);
           return (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("EventDetail", { rally: item })
-              }
-            >
-              <Spacer position="bottom" size="large">
-                <EventInfoCard rally={item} />
-              </Spacer>
-            </TouchableOpacity>
+            <>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("EventDetail", { rally: item })
+                }
+              >
+                <Spacer position="bottom" size="large">
+                  <EventInfoCard rally={item} />
+                </Spacer>
+              </TouchableOpacity>
+            </>
           );
         }}
         keyExtractor={(item) => item.uid}
       />
+      <Title>ADD ONE</Title>
     </ServeSafeAreaView>
   );
 };

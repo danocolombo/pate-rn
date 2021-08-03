@@ -10,6 +10,7 @@ import { LocationContextProvider } from "../../services/location/location.contex
 import { FavoritesContextProvider } from "../../services/favorites/favorites.context";
 import { CognitoAuthContext } from "../../services/cognito/cognito-auth.context";
 //import { SafeArea } from "../../components/utility/safe-area.component";
+import { ServeScreen } from "../../features/serve/screens/serve.screen";
 import { MapScreen } from "../../features/map/screens/map.screen";
 const Tab = createBottomTabNavigator();
 
@@ -59,7 +60,7 @@ export const AppNavigator = () => {
                 {/* the following order is the order on bottom and default is first screen */}
                 <Tab.Screen name="Events" component={EventsNavigator} />
                 {userProfile?.stateRep || userProfile?.stateLead ? (
-                  <Tab.Screen name="Serve" component={MapScreen} />
+                  <Tab.Screen name="Serve" component={ServeScreen} />
                 ) : null}
                 <Tab.Screen name="Profile" component={SettingsNavigator} />
               </Tab.Navigator>
